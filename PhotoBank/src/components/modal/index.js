@@ -74,7 +74,7 @@ function Modal({
             <ButtonForm
               type="button"
               onClick={(e) => {
-                postUserComments();
+                postUserComments(modal.id);
               }}
             >
               Отправить комментарий

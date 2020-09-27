@@ -5,6 +5,7 @@ import Footer from "../../components/footer/index";
 import Modal from "../../components/modal/index";
 
 const API = `https://boiling-refuge-66454.herokuapp.com/images`;
+
 function App() {
   const [dataPhotos, setDataPhotos] = useState([]);
   const [modal, setModal] = useState([]);
@@ -19,6 +20,10 @@ function App() {
     setDataPhotos(data);
   };
 
+  useEffect(() => {
+    getPhoto(API);
+  }, []);
+
   const getModalPhoto = async (id) => {
     const response = await fetch(`https://boiling-refuge-66454.herokuapp.com/images/${id}`);
     const data = await response.json();
@@ -27,6 +32,7 @@ function App() {
   };
 
   const postComments = async (id, data) => {
+    console.log("id", id);
     await fetch(`https://boiling-refuge-66454.herokuapp.com/images/${id}/comments`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -36,21 +42,15 @@ function App() {
     });
   };
 
-  const postUserComments = (id = 237) => {
-    dataPhotos.map((item) => {
-      console.log("item :>> ", item);
-    });
+  const postUserComments = (id) => {
     const data = { name: nameUser, comment: commentsUser };
     postComments(id, data);
     setNameUser("");
     setCommentsUser("");
   };
 
-  useEffect(() => {
-    getPhoto(API);
-  }, []);
-
   const openModal = async (id) => {
+    console.log("modal", modal);
     await getModalPhoto(id);
     setModalActive("active");
   };
