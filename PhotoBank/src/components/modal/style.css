@@ -1,0 +1,5 @@
+.active {
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s linear;
+}
