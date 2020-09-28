@@ -3,8 +3,7 @@ import List from "../../components/List/index";
 import { HeroTitle } from "./style";
 import Footer from "../../components/footer/index";
 import Modal from "../../components/modal/index";
-
-const API = `https://boiling-refuge-66454.herokuapp.com/images`;
+import { getImageById, getPhotoApi } from "../../api/api";
 
 function App() {
   const [dataPhotos, setDataPhotos] = useState([]);
@@ -14,21 +13,28 @@ function App() {
   const [nameUser, setNameUser] = useState("");
   const [commentsUser, setCommentsUser] = useState("");
   //
-  const getPhoto = async (api) => {
-    const response = await fetch(api);
-    const data = await response.json();
-    setDataPhotos(data);
+
+  const getPhoto = async () => {
+    const data = await getPhotoApi();
+    if (data !== undefined) {
+      setDataPhotos(data);
+    } else {
+      console.log("Мы не получили данных");
+    }
   };
 
   useEffect(() => {
-    getPhoto(API);
+    getPhoto();
   }, []);
 
   const getModalPhoto = async (id) => {
-    const response = await fetch(`https://boiling-refuge-66454.herokuapp.com/images/${id}`);
-    const data = await response.json();
-    setModal(data);
-    setUserComments(data.comments);
+    const data = await getImageById(id);
+    if (data !== undefined) {
+      setModal(data);
+      setUserComments(data.comments);
+    } else {
+      console.log("Данных нет");
+    }
   };
 
   const postComments = async (id, data) => {
