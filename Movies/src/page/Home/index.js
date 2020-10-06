@@ -26,7 +26,7 @@ function Home() {
   const openModalScreen = async (id, average, popularity) => {
     const data = await getDescriptionData(id);
     if (data !== undefined) {
-      const newModal = { ...data,  rating: average, popularity: popularity };
+      const newModal = { ...data, rating: average, popularity: popularity };
       setModalData(newModal);
       setOpenModal("active");
     } else {

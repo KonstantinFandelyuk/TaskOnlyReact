@@ -6,7 +6,7 @@ function MoviesList({ movies, openModalScreen }) {
   return (
     <section className="section">
       <div className="container">
-        <H2Title>Фильмы на сегодня</H2Title>
+        <H2Title>Сериалы в эфире сегодня</H2Title>
         <div className="films">
           <FilmsList className="films-list">
             {movies.map((item, index) => {

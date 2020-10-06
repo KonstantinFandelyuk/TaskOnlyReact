@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  NavList,
-  NavListItem,
-  HeaderForm,
-  SerachInput,
-  LinkSpan,
-} from "./style";
+import { NavList, NavListItem, HeaderForm, SerachInput, LinkSpan, NavListDropDown } from "./style";
 import { Link } from "react-router-dom";
 
 function NavMenu() {
@@ -21,6 +15,12 @@ function NavMenu() {
           <Link to="/tv-show">
             <LinkSpan>Сериалы</LinkSpan>
           </Link>
+          <NavListDropDown className="ddd">
+            <NavListItem dropLi={true}>Популярные</NavListItem>
+            <NavListItem dropLi={true}>В эфире сегодня</NavListItem>
+            <NavListItem dropLi={true}>По телевидению</NavListItem>
+            <NavListItem dropLi={true}>Лучшие</NavListItem>
+          </NavListDropDown>
         </NavListItem>
         <NavListItem className="nav__list-item">
           <Link to="/actors">
