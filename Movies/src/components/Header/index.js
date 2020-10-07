@@ -3,7 +3,7 @@ import { HeaderWrapper, HeaderList, HeaderListItem } from "./style";
 import NavMenu from "./NavMenu/index";
 import Logo from "./Logo/index";
 
-function Header() {
+function Header({ switchCategory }) {
   return (
     <HeaderWrapper className="header">
       <HeaderList className="header__list">
@@ -11,7 +11,7 @@ function Header() {
           <Logo />
         </HeaderListItem>
         <HeaderListItem className="header__list-item">
-          <NavMenu />
+          <NavMenu switchCategory={switchCategory} />
         </HeaderListItem>
       </HeaderList>
     </HeaderWrapper>

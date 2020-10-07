@@ -4,32 +4,33 @@ const NavList = styled.ul`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  & li:hover > .ddd {
-    visibility: visible;
-    transition: 0.5s liner;
-    /* opacity: 1; */
-    z-index: 2;
-  }
+  transition: 0.5s linear;
+`;
+
+const NavListDropDown = styled.ul`
+  visibility: hidden;
+  position: absolute;
+  top: 27px;
+  left: -6px;
+  width: 165px;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  padding: 10px 5px;
+  transition: 0.5s linear;
+  opacity: 0;
+  z-index: 2;
 `;
 
 const NavListItem = styled.li`
   margin-right: ${(props) => (props.dropLi ? "0" : "45px")};
   position: relative;
   margin-bottom: ${(props) => (props.dropLi ? "10px" : "0")};
-`;
-
-const NavListDropDown = styled.ul`
-  visibility: hidden;
-  position: absolute;
-  top: 25px;
-  left: -2px;
-  width: 165px;
-  background: white;
-  color: black;
-  border-radius: 5px;
-  padding: 5px;
-  transition: 0.5s liner;
-  z-index: -1;
+  &:hover > .dropDown {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s linear;
+  }
 `;
 
 const HeaderForm = styled.form`
