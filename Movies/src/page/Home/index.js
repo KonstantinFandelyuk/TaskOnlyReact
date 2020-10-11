@@ -7,6 +7,7 @@ import Header from "../../components/Header/index";
 import "./style.scss";
 
 const favoriteTemplate = { name: "", src: "", id: "" };
+
 function Home() {
   const [language, setLanguage] = useState("ru-RU");
   const [movies, setMovies] = useState([]);
@@ -68,8 +69,10 @@ function Home() {
   };
 
   const addFavorite = (e, id, name, image) => {
-    console.log("e.target :>> ", e.target);
+    let itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [];
     if (+id === +e.target.dataset.id && !e.target.classList.contains("favorite")) {
+      itemsArray.push({ name: name, image: image, id: id });
+      localStorage.setItem("items", JSON.stringify(itemsArray));
       e.target.classList.add("favorite");
       e.target.src = "/images/icons/active.png";
     } else {
