@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalElement, ModalBG, TopBlock, ModalClose, TopBlockItem, Text } from "./style";
-import { sliceDate } from "../../helpers/CardItem";
+import { sliceDate } from "../../helpers/helpers";
 
 function Modal({ oepnModal, modalData, closeModal }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { switchDate, switchImageFront, switchImageBack } from "../../../helpers/CardItem";
+import { switchDate, switchImageFront, switchImageBack } from "../../../helpers/helpers";
 import { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite } from "./style";
 
 function MovieItem({ item, openModalScreen, heart, addFavorite }) {
@@ -33,7 +33,7 @@ function MovieItem({ item, openModalScreen, heart, addFavorite }) {
           src="/images/icons/default.png"
           alt="избранное"
           onClick={(e) => {
-            addFavorite(e, item.id);
+            addFavorite(e, item.id, item.name, item.poster_path);
           }}
         />
       </FilmFavorite>

@@ -10,6 +10,14 @@ const Search = styled.div`
   padding: 15px;
   opacity: ${(props) => (props.list ? 0 : 1)};
   border-radius: 0px 0px 10px 10px;
+  max-height: 300px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar-thumb {
+    background: lightgray;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
 `;
 
 export { Search };

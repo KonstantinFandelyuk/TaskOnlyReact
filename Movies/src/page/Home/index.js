@@ -6,6 +6,7 @@ import Modal from "../../components/Modal/index.js";
 import Header from "../../components/Header/index";
 import "./style.scss";
 
+const favoriteTemplate = { name: "", src: "", id: "" };
 function Home() {
   const [language, setLanguage] = useState("ru-RU");
   const [movies, setMovies] = useState([]);
@@ -15,7 +16,6 @@ function Home() {
   const [titleCategory, setTitleCategory] = useState("Сериалы в эфире сегодня");
   const [searchText, setSearchText] = useState("");
   const [searcDataList, setSearchDataList] = useState([]);
-  console.log("object :>> ", searcDataList);
 
   const searchMovies = async () => {
     const data = await getSearchResult(searchText, language);
@@ -67,7 +67,8 @@ function Home() {
     setOpenModal("");
   };
 
-  const addFavorite = (e, id) => {
+  const addFavorite = (e, id, name, image) => {
+    console.log("e.target :>> ", e.target);
     if (+id === +e.target.dataset.id && !e.target.classList.contains("favorite")) {
       e.target.classList.add("favorite");
       e.target.src = "/images/icons/active.png";

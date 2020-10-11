@@ -1,5 +1,9 @@
 export const switchDate = (str) => {
-  return str.replace(/^(\d{4}).(\d{2}).(\d{2})/, "$3.$2.$1");
+  if (str) {
+    return str.replace(/^(\d{4}).(\d{2}).(\d{2})/, "$3.$2.$1");
+  } else {
+    return "";
+  }
 };
 
 export const switchImageFront = (e, str) => {
@@ -15,7 +19,7 @@ export const sliceDate = (str) => {
     let str2 = str.slice(0, 4);
     return str2;
   } else {
-    return;
+    return "";
   }
 };
 
