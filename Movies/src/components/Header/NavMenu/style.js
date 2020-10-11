@@ -35,18 +35,38 @@ const NavListItem = styled.li`
 
 const HeaderForm = styled.form`
   position: relative;
+  &::after {
+    content: "";
+    background-image: url("/images/icons/search.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const SerachInput = styled.input`
   height: 15px;
-  width: 250px;
-  border-radius: 5px;
+  width: 300px;
+  height: 30px;
   border: none;
   padding: 10px;
+  position: relative;
+  transition: 0.5s linear;
+  &:focus {
+    border-radius: 10px 10px 0px 0px;
+    transition: 0.5s linear;
+  }
 `;
 
 const LinkSpan = styled.span`
   color: white;
 `;
+const LanSwitch = styled.div`
+  cursor: pointer;
+`;
 
-export { NavList, NavListItem, HeaderForm, SerachInput, LinkSpan, NavListDropDown };
+export { NavList, NavListItem, HeaderForm, SerachInput, LinkSpan, NavListDropDown, LanSwitch };

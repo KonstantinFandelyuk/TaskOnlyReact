@@ -2,7 +2,7 @@ import React from "react";
 import MovieItem from "./MovieItem/index";
 import { H2Title, FilmsList } from "./style";
 
-function MoviesList({ movies, openModalScreen, titleCategory }) {
+function MoviesList({ movies, openModalScreen, titleCategory, addFavorite }) {
   return (
     <section className="section">
       <div className="container">
@@ -10,7 +10,14 @@ function MoviesList({ movies, openModalScreen, titleCategory }) {
         <div className="films">
           <FilmsList className="films-list">
             {movies.map((item, index) => {
-              return <MovieItem key={index} item={item} openModalScreen={openModalScreen} />;
+              return (
+                <MovieItem
+                  key={index}
+                  item={item}
+                  openModalScreen={openModalScreen}
+                  addFavorite={addFavorite}
+                />
+              );
             })}
           </FilmsList>
         </div>

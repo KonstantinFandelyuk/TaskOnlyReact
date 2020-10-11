@@ -14,6 +14,7 @@ const HeaderList = styled.div`
 
 const HeaderListItem = styled.div`
   flex-basis: ${(props) => (props.logo ? "5%" : "70%")};
+  position: relative;
 `;
 
 export { HeaderWrapper, HeaderList, HeaderListItem };

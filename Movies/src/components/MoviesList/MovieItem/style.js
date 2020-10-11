@@ -23,7 +23,7 @@ const FilmImage = styled.div`
 const FilmAverage = styled.div`
   position: absolute;
   top: -15px;
-  left: -10px;
+  right: -10px;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -42,14 +42,23 @@ const FilmName = styled.div`
   font-size: 1.5rem;
 `;
 
+const FilmFavorite = styled.div`
+  position: absolute;
+  max-width: 35px;
+  top: -3%;
+  left: -4%;
+  z-index: 10;
+`;
+
 const FilmDate = styled.div`
   position: absolute;
-  top: -12px;
-  right: 8px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 5px;
   background: white;
   border: 1px solid #a7a7a757;
   padding: 5px;
 `;
 
-export { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate };
+export { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite };

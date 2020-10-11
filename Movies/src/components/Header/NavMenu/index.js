@@ -1,8 +1,16 @@
 import React from "react";
-import { NavList, NavListItem, HeaderForm, SerachInput, LinkSpan, NavListDropDown } from "./style";
+import {
+  NavList,
+  NavListItem,
+  HeaderForm,
+  SerachInput,
+  LinkSpan,
+  NavListDropDown,
+  LanSwitch,
+} from "./style";
 import { Link } from "react-router-dom";
 
-function NavMenu({ switchCategory }) {
+function NavMenu({ switchCategory, switchLanguage, setSearchText, searcDataList }) {
   return (
     <nav className="nav">
       <NavList className="nav__list">
@@ -56,13 +64,37 @@ function NavMenu({ switchCategory }) {
         </NavListItem>
         <NavListItem className="nav__list-item">
           <HeaderForm action="">
-            <SerachInput type="search" name="search" id="search" placeholder="Поиск по каталогу" />
+            <SerachInput
+              type="text"
+              name="search"
+              // id="search"
+              // list="search"
+              placeholder="Поиск по каталогу"
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+            {/* <datalist id="search">
+              {searcDataList && searcDataList.map((item) => <option>{item.name}</option>)}
+            </datalist> */}
           </HeaderForm>
         </NavListItem>
         <NavListItem className="nav__list-item">
           <div className="switch-langvich">
-            <div className="ru">RU</div>
-            <div className="EN">EN</div>
+            <LanSwitch
+              onClick={() => {
+                switchLanguage("ru-RU");
+              }}
+            >
+              RU
+            </LanSwitch>
+            <LanSwitch
+              onClick={() => {
+                switchLanguage("en-US");
+              }}
+            >
+              EN
+            </LanSwitch>
           </div>
         </NavListItem>
         <NavListItem className="nav__list-item">
