@@ -82,8 +82,6 @@ function Home() {
       e.target.src = "/images/icons/default.png";
     }
   };
-;
-
   return (
     <div className="home">
       <Header
@@ -93,6 +91,7 @@ function Home() {
         searcDataList={searcDataList}
         switchFavorite={switchFavorite}
         setSwitchFavorite={setSwitchFavorite}
+        openModalScreen={openModalScreen}
       />
       <main>
         <Slider />

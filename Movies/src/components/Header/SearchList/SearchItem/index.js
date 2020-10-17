@@ -2,10 +2,10 @@ import React from "react";
 import { switchDate } from "../../../../helpers/helpers";
 import { Item, ItemName, ItemImage } from "./style";
 
-function SearchItem({ item }) {
+function SearchItem({ item, openModalScreen }) {
   return (
     <>
-      <Item>
+      <Item onClick={() => openModalScreen(item.id, item.vote_average, item.popularity)}>
         <ItemName>{`${item.name} ${switchDate(item.first_air_date)}`}</ItemName>
         <ItemImage>
           <img

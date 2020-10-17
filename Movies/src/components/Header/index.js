@@ -1,7 +1,7 @@
 import React from "react";
 import { HeaderWrapper, HeaderList, HeaderListItem } from "./style";
 import NavMenu from "./NavMenu/index";
-import SearchItem from "./SearchList/index";
+import SearchList from "./SearchList/index";
 import Logo from "./Logo/index";
 import FavoriteList from "./FavoriteList";
 
@@ -12,6 +12,7 @@ function Header({
   searcDataList,
   switchFavorite,
   setSwitchFavorite,
+  openModalScreen,
 }) {
   return (
     <HeaderWrapper className="header">
@@ -27,7 +28,10 @@ function Header({
             searcDataList={searcDataList}
             setSwitchFavorite={setSwitchFavorite}
           />
-          <SearchItem searcDataList={searcDataList !== undefined ? searcDataList : []} />
+          <SearchList
+            searcDataList={searcDataList !== undefined ? searcDataList : []}
+            openModalScreen={openModalScreen}
+          />
           {switchFavorite ? <FavoriteList setSwitchFavorite={setSwitchFavorite} /> : null}
         </HeaderListItem>
       </HeaderList>

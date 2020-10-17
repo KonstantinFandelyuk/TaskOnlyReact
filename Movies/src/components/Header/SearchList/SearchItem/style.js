@@ -5,6 +5,7 @@ const Item = styled.li`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const ItemName = styled.div`
