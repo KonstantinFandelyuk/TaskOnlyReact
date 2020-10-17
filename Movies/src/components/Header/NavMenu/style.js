@@ -68,5 +68,18 @@ const LinkSpan = styled.span`
 const LanSwitch = styled.div`
   cursor: pointer;
 `;
+const Favorites = styled.div`
+  width: 40px;
+  cursor: pointer;
+`;
 
-export { NavList, NavListItem, HeaderForm, SerachInput, LinkSpan, NavListDropDown, LanSwitch };
+export {
+  NavList,
+  NavListItem,
+  HeaderForm,
+  SerachInput,
+  LinkSpan,
+  NavListDropDown,
+  LanSwitch,
+  Favorites,
+};

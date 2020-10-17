@@ -4,6 +4,7 @@ import Slider from "../../components/Slider/index";
 import MoviesList from "../../components/MoviesList/index";
 import Modal from "../../components/Modal/index.js";
 import Header from "../../components/Header/index";
+import { itemsArray } from "../../helpers/helpers";
 import "./style.scss";
 
 const favoriteTemplate = { name: "", src: "", id: "" };
@@ -17,6 +18,7 @@ function Home() {
   const [titleCategory, setTitleCategory] = useState("Сериалы в эфире сегодня");
   const [searchText, setSearchText] = useState("");
   const [searcDataList, setSearchDataList] = useState([]);
+  const [switchFavorite, setSwitchFavorite] = useState(false);
 
   const searchMovies = async () => {
     const data = await getSearchResult(searchText, language);
@@ -64,14 +66,14 @@ function Home() {
       console.log("Мы не получили данных");
     }
   };
+
   const closeModal = () => {
     setOpenModal("");
   };
 
-  const addFavorite = (e, id, name, image) => {
-    let itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [];
+  const addFavorite = (e, id, name, image, average) => {
     if (+id === +e.target.dataset.id && !e.target.classList.contains("favorite")) {
-      itemsArray.push({ name: name, image: image, id: id });
+      itemsArray.push({ name: name, image: image, id: id, average: average });
       localStorage.setItem("items", JSON.stringify(itemsArray));
       e.target.classList.add("favorite");
       e.target.src = "/images/icons/active.png";
@@ -80,6 +82,7 @@ function Home() {
       e.target.src = "/images/icons/default.png";
     }
   };
+;
 
   return (
     <div className="home">
@@ -88,6 +91,8 @@ function Home() {
         switchLanguage={switchLanguage}
         setSearchText={setSearchText}
         searcDataList={searcDataList}
+        switchFavorite={switchFavorite}
+        setSwitchFavorite={setSwitchFavorite}
       />
       <main>
         <Slider />

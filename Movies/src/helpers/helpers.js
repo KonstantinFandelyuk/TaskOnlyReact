@@ -1,3 +1,4 @@
+export const defaultNoImage = "../images/movies-list/no-poster.jpg";
 export const switchDate = (str) => {
   if (str) {
     return str.replace(/^(\d{4}).(\d{2}).(\d{2})/, "$3.$2.$1");
@@ -7,11 +8,19 @@ export const switchDate = (str) => {
 };
 
 export const switchImageFront = (e, str) => {
-  e.target.src = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${str}`;
+  if (str) {
+    e.target.src = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${str}`;
+  } else if (str === null) {
+    e.target.src = defaultNoImage;
+  }
 };
 
 export const switchImageBack = (e, str) => {
-  e.target.src = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${str}`;
+  if (str) {
+    e.target.src = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${str}`;
+  } else if (str === null) {
+    e.target.src = defaultNoImage;
+  }
 };
 
 export const sliceDate = (str) => {
@@ -22,7 +31,9 @@ export const sliceDate = (str) => {
     return "";
   }
 };
-
+export const itemsArray = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
 // modalData.genres
 // {
 /* <canvas id="cnvs" width="400px" height="400px"></canvas>

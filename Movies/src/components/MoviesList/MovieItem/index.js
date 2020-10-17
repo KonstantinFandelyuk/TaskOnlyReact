@@ -1,13 +1,22 @@
 import React from "react";
-import { switchDate, switchImageFront, switchImageBack } from "../../../helpers/helpers";
+import {
+  switchDate,
+  switchImageFront,
+  switchImageBack,
+  defaultNoImage,
+} from "../../../helpers/helpers";
 import { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite } from "./style";
 
-function MovieItem({ item, openModalScreen, heart, addFavorite }) {
+function MovieItem({ item, openModalScreen, addFavorite }) {
   return (
     <FilmItem className="flims-item">
       <FilmImage className="film-image">
         <img
-          src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${item.poster_path}`}
+          src={
+            item.poster_path
+              ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2${item.poster_path}`
+              : defaultNoImage
+          }
           alt={`${item.name}`}
           onMouseEnter={(e) => {
             switchImageFront(e, item.backdrop_path);
@@ -33,7 +42,7 @@ function MovieItem({ item, openModalScreen, heart, addFavorite }) {
           src="/images/icons/default.png"
           alt="избранное"
           onClick={(e) => {
-            addFavorite(e, item.id, item.name, item.poster_path);
+            addFavorite(e, item.id, item.name, item.poster_path, item.vote_average);
           }}
         />
       </FilmFavorite>

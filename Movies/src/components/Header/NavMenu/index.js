@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { itemsArray } from "../../../helpers/helpers";
 import {
   NavList,
   NavListItem,
@@ -7,10 +9,16 @@ import {
   LinkSpan,
   NavListDropDown,
   LanSwitch,
+  Favorites,
 } from "./style";
-import { Link } from "react-router-dom";
 
-function NavMenu({ switchCategory, switchLanguage, setSearchText, searcDataList }) {
+function NavMenu({
+  switchCategory,
+  switchLanguage,
+  setSearchText,
+  searcDataList,
+  setSwitchFavorite,
+}) {
   return (
     <nav className="nav">
       <NavList className="nav__list">
@@ -79,7 +87,7 @@ function NavMenu({ switchCategory, switchLanguage, setSearchText, searcDataList 
             </datalist> */}
           </HeaderForm>
         </NavListItem>
-        <NavListItem className="nav__list-item">
+        <NavListItem>
           <div className="switch-langvich">
             <LanSwitch
               onClick={() => {
@@ -97,8 +105,17 @@ function NavMenu({ switchCategory, switchLanguage, setSearchText, searcDataList 
             </LanSwitch>
           </div>
         </NavListItem>
-        <NavListItem className="nav__list-item">
-          <div className="favorites">Heart</div>
+        <NavListItem>
+          <Favorites onClick={() => setSwitchFavorite(true)}>
+            <img
+              src={
+                itemsArray.length > 0
+                  ? "../images/header/favorite/active.png"
+                  : "../images/header/favorite/none.png"
+              }
+              alt=""
+            />
+          </Favorites>
         </NavListItem>
       </NavList>
     </nav>

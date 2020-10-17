@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Search = styled.div`
   position: absolute;
   top: 30px;
-  right: 187px;
+  right: 193px;
   background: white;
   width: 300px;
   z-index: ${(props) => (props.list ? -1 : 11)};
