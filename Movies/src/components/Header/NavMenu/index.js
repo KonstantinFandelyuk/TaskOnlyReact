@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { itemsArray } from "../../../helpers/helpers";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { itemsArray } from '../../../helpers/helpers';
 import {
   NavList,
   NavListItem,
@@ -10,14 +10,15 @@ import {
   NavListDropDown,
   LanSwitch,
   Favorites,
-} from "./style";
+} from './style';
 
 function NavMenu({
   switchCategory,
   switchLanguage,
   setSearchText,
   searcDataList,
-  setSwitchFavorite,
+  setToggleFavorite,
+  favoriteData,
 }) {
   return (
     <nav className="nav">
@@ -36,7 +37,7 @@ function NavMenu({
               <Link
                 to="/tv-show/popular"
                 onClick={() => {
-                  switchCategory("popular", "Популярные сериалы");
+                  switchCategory('popular', 'Популярные сериалы');
                 }}
               >
                 Популярные
@@ -46,7 +47,7 @@ function NavMenu({
               <Link
                 to="/tv-show/on-today"
                 onClick={() => {
-                  switchCategory("on_the_air", "В эфире сегодня");
+                  switchCategory('on_the_air', 'В эфире сегодня');
                 }}
               >
                 В эфире сегодня
@@ -57,7 +58,7 @@ function NavMenu({
               <Link
                 to="/tv-show/top-rate"
                 onClick={() => {
-                  switchCategory("top_rated", "Топовые сериалы за неделю");
+                  switchCategory('top_rated', 'Топовые сериалы за неделю');
                 }}
               >
                 Лучшие
@@ -91,14 +92,14 @@ function NavMenu({
           <div className="switch-langvich">
             <LanSwitch
               onClick={() => {
-                switchLanguage("ru-RU");
+                switchLanguage('ru-RU');
               }}
             >
               RU
             </LanSwitch>
             <LanSwitch
               onClick={() => {
-                switchLanguage("en-US");
+                switchLanguage('en-US');
               }}
             >
               EN
@@ -106,12 +107,12 @@ function NavMenu({
           </div>
         </NavListItem>
         <NavListItem>
-          <Favorites onClick={() => setSwitchFavorite(true)}>
+          <Favorites onClick={() => setToggleFavorite(true)}>
             <img
               src={
-                itemsArray.length > 0
-                  ? "../images/header/favorite/active.png"
-                  : "../images/header/favorite/none.png"
+                favoriteData.length > 0
+                  ? '../images/header/favorite/active.png'
+                  : '../images/header/favorite/none.png'
               }
               alt=""
             />

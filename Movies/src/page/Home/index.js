@@ -1,33 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { getData, getDescriptionData, getSearchResult } from "../../api/api.js";
-import Slider from "../../components/Slider/index";
-import MoviesList from "../../components/MoviesList/index";
-import Modal from "../../components/Modal/index.js";
-import Header from "../../components/Header/index";
-import { itemsArray } from "../../helpers/helpers";
-import "./style.scss";
-
-const favoriteTemplate = { name: "", src: "", id: "" };
+import React, { useState, useEffect } from 'react';
+import { getData, getDescriptionData, getSearchResult } from '../../api/api.js';
+import Slider from '../../components/Slider/index';
+import MoviesList from '../../components/MoviesList/index';
+import Modal from '../../components/Modal/index.js';
+import Header from '../../components/Header/index';
+import './style.scss';
 
 function Home() {
-  const [language, setLanguage] = useState("ru-RU");
+  const [language, setLanguage] = useState('ru-RU');
   const [movies, setMovies] = useState([]);
   const [modalData, setModalData] = useState({});
-  const [oepnModal, setOpenModal] = useState("");
-  const [category, setCateory] = useState("airing_today");
-  const [titleCategory, setTitleCategory] = useState("Сериалы в эфире сегодня");
-  const [searchText, setSearchText] = useState("");
+  const [oepnModal, setOpenModal] = useState('');
+  const [category, setCateory] = useState('airing_today');
+  const [titleCategory, setTitleCategory] = useState('Сериалы в эфире сегодня');
+  const [searchText, setSearchText] = useState('');
   const [searcDataList, setSearchDataList] = useState([]);
-  const [switchFavorite, setSwitchFavorite] = useState(false);
+  const [favoriteData, setFavoriteData] = useState([]);
+  const [toggleFavorite, setToggleFavorite] = useState(false);
 
   const searchMovies = async () => {
     const data = await getSearchResult(searchText, language);
     if (data !== undefined) {
       setSearchDataList(data.results);
     } else {
-      console.log("Мы не получили данных");
+      console.log('Мы не получили данных');
     }
   };
+
+  useEffect(() => {
+    const itemsArray = localStorage.getItem('items')
+      ? JSON.parse(localStorage.getItem('items'))
+      : [];
+    setFavoriteData(itemsArray);
+  }, []);
+
   useEffect(() => {
     searchMovies();
   }, [searchText, language]);
@@ -38,7 +44,7 @@ function Home() {
       if (data !== undefined) {
         setMovies(data.results);
       } else {
-        console.log("Мы не получили данных");
+        console.log('Мы не получили данных');
       }
     };
     getMovies();
@@ -49,39 +55,49 @@ function Home() {
     setTitleCategory(title);
   };
 
+  // Делаю смену языка
   const switchLanguage = (ln) => {
     setLanguage(ln);
   };
+
   const openSerchLink = async (id) => {
     // const data = await getDescriptionData(id, language);
   };
 
+  // Открываю модальное окно
   const openModalScreen = async (id, average, popularity) => {
     const data = await getDescriptionData(id, language);
     if (data !== undefined) {
       const newModal = { ...data, rating: average, popularity: popularity };
       setModalData(newModal);
-      setOpenModal("active");
+      setOpenModal('active');
     } else {
-      console.log("Мы не получили данных");
+      console.log('Мы не получили данных');
     }
   };
 
+  // Закрываю модальное окно
   const closeModal = () => {
-    setOpenModal("");
+    setOpenModal('');
   };
 
+  // Добавляю фильмы в избранное и в локал сторедж
   const addFavorite = (e, id, name, image, average) => {
-    if (+id === +e.target.dataset.id && !e.target.classList.contains("favorite")) {
+    const itemsArray = localStorage.getItem('items')
+      ? JSON.parse(localStorage.getItem('items'))
+      : [];
+    if (+id === +e.target.dataset.id && !e.target.classList.contains('favorite')) {
       itemsArray.push({ name: name, image: image, id: id, average: average });
-      localStorage.setItem("items", JSON.stringify(itemsArray));
-      e.target.classList.add("favorite");
-      e.target.src = "/images/icons/active.png";
+      localStorage.setItem('items', JSON.stringify(itemsArray));
+      setFavoriteData((prev) => [...prev, { name: name, image: image, id: id, average: average }]);
+      e.target.classList.add('favorite');
+      e.target.src = '/images/icons/active.png';
     } else {
-      e.target.classList.remove("favorite");
-      e.target.src = "/images/icons/default.png";
+      e.target.classList.remove('favorite');
+      e.target.src = '/images/icons/default.png';
     }
   };
+
   return (
     <div className="home">
       <Header
@@ -89,9 +105,10 @@ function Home() {
         switchLanguage={switchLanguage}
         setSearchText={setSearchText}
         searcDataList={searcDataList}
-        switchFavorite={switchFavorite}
-        setSwitchFavorite={setSwitchFavorite}
+        toggleFavorite={toggleFavorite}
+        setToggleFavorite={setToggleFavorite}
         openModalScreen={openModalScreen}
+        favoriteData={favoriteData}
       />
       <main>
         <Slider />

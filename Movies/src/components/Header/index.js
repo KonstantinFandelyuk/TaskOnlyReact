@@ -1,18 +1,19 @@
-import React from "react";
-import { HeaderWrapper, HeaderList, HeaderListItem } from "./style";
-import NavMenu from "./NavMenu/index";
-import SearchList from "./SearchList/index";
-import Logo from "./Logo/index";
-import FavoriteList from "./FavoriteList";
+import React from 'react';
+import { HeaderWrapper, HeaderList, HeaderListItem } from './style';
+import NavMenu from './NavMenu/index';
+import SearchList from './SearchList/index';
+import Logo from './Logo/index';
+import FavoriteList from './FavoriteList';
 
 function Header({
   switchCategory,
   switchLanguage,
   setSearchText,
   searcDataList,
-  switchFavorite,
-  setSwitchFavorite,
+  toggleFavorite,
+  setToggleFavorite,
   openModalScreen,
+  favoriteData,
 }) {
   return (
     <HeaderWrapper className="header">
@@ -26,13 +27,16 @@ function Header({
             switchLanguage={switchLanguage}
             setSearchText={setSearchText}
             searcDataList={searcDataList}
-            setSwitchFavorite={setSwitchFavorite}
+            setToggleFavorite={setToggleFavorite}
+            favoriteData={favoriteData}
           />
           <SearchList
             searcDataList={searcDataList !== undefined ? searcDataList : []}
             openModalScreen={openModalScreen}
           />
-          {switchFavorite ? <FavoriteList setSwitchFavorite={setSwitchFavorite} /> : null}
+          {toggleFavorite ? (
+            <FavoriteList setToggleFavorite={setToggleFavorite} favoriteData={favoriteData} />
+          ) : null}
         </HeaderListItem>
       </HeaderList>
     </HeaderWrapper>

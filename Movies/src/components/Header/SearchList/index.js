@@ -3,7 +3,6 @@ import SearchItem from "./SearchItem/index";
 import { Search } from "./style";
 
 function SearchList({ searcDataList, openModalScreen }) {
-  console.log("searcDataList :>> ", searcDataList);
   return (
     <Search list={searcDataList.length === 0}>
       <ul>

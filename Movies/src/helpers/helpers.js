@@ -31,9 +31,7 @@ export const sliceDate = (str) => {
     return "";
   }
 };
-export const itemsArray = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+
 // modalData.genres
 // {
 /* <canvas id="cnvs" width="400px" height="400px"></canvas>

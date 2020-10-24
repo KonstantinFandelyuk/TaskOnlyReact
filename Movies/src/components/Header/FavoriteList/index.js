@@ -1,19 +1,18 @@
-import React from "react";
-import FavoriteItem from "./FavoriteItem/index";
-import { itemsArray } from "../../../helpers/helpers";
-import { Favorite, FavoriteBG, FavoriteTitle, ModalClose } from "./style";
+import React from 'react';
+import FavoriteItem from './FavoriteItem/index';
+import { Favorite, FavoriteBG, FavoriteTitle, ModalClose } from './style';
 
-const FavoriteList = ({ setSwitchFavorite }) => {
+const FavoriteList = ({ setToggleFavorite, favoriteData }) => {
   return (
     <Favorite>
       <FavoriteBG>
-        <ModalClose onClick={() => setSwitchFavorite(false)}>X</ModalClose>
+        <ModalClose onClick={() => setToggleFavorite(false)}>X</ModalClose>
         <FavoriteTitle>Ваш список избранного</FavoriteTitle>
         <ul>
-          {itemsArray.length === 0 ? (
+          {favoriteData.length === 0 ? (
             <li>Упс а избранного нет :( .... </li>
           ) : (
-            itemsArray.map((item, index) => <FavoriteItem item={item} key={index} />)
+            favoriteData.map((item, index) => <FavoriteItem item={item} key={index} />)
           )}
         </ul>
       </FavoriteBG>
