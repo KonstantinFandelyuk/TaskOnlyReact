@@ -1,6 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import Home from "../page/Home/index";
+import React from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import Home from '../page/Home/index';
 
 function Routers() {
   return (

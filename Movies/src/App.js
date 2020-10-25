@@ -1,10 +1,12 @@
-import React from "react";
-import Routers from "./router/index";
+import React from 'react';
+import Footer from './components/Footer/Footer';
+import Routers from './router/index';
 
 function App() {
   return (
     <>
       <Routers />
+      <Footer />
     </>
   );
 }

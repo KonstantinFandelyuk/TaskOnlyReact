@@ -1,6 +1,6 @@
-import React from "react";
-import { defaultNoImage } from "../../../../helpers/helpers";
-import { Item, ItemImage, ItemAverage } from "./style";
+import React from 'react';
+import { defaultNoImage } from '../../../../helpers/helpers';
+import { Item, ItemImage, ItemAverage } from './style';
 
 const FavoriteItem = ({ item }) => {
   return (
@@ -22,5 +22,3 @@ const FavoriteItem = ({ item }) => {
 };
 
 export default FavoriteItem;
-
-// itemsArray.push({ name: name, image: image, id: id, average: average });

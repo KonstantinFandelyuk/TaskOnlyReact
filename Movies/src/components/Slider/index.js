@@ -1,34 +1,43 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { EffectFade, Autoplay, Navigation } from "swiper";
-import "./style.scss";
-// import "swiper/components/navigation/navigation.scss";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination } from 'swiper';
+import { SlideImage, SlideText } from './style';
+import { defaultNoImage } from '../../helpers/helpers';
+import './style.scss';
+import 'swiper/components/pagination/pagination.scss';
 
-function Slider() {
-  SwiperCore.use([EffectFade, Autoplay, Navigation]);
+function Slider({ listData }) {
+  SwiperCore.use([Pagination]);
   return (
-    <>
+    <div className="slider">
       <Swiper
-        slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
-        // autoplay={true}
-        effect="fade"
+        slidesPerView={3}
+        spaceBetween={10}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        effect="slide"
       >
-        <SwiperSlide>
-          <img src="/images/slider/wallpeper.png" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/slider/wallpeper2.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/slider/wallpeper3.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/images/slider/wallpeper4.jpg" alt="" />
-        </SwiperSlide>
+        {listData.map((item, index) => (
+          <SwiperSlide key={index}>
+            <SlideImage>
+              <img
+                src={
+                  item.poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+                    : defaultNoImage
+                }
+                alt={`${item.name}`}
+              />
+            </SlideImage>
+            <SlideText>
+              {item.name} эпизод {item.episode_count}
+            </SlideText>
+            <SlideText>Дата выхода {item.air_date}</SlideText>
+          </SwiperSlide>
+        ))}
       </Swiper>
-    </>
+    </div>
   );
 }
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { getData, getDescriptionData, getSearchResult } from '../../api/api.js';
-import Slider from '../../components/Slider/index';
+import { getData, getDescriptionData, getSearchResult, getPersonalActor } from '../../api/api.js';
+import Slider from '../../components/Header/HeaderSlider/index';
 import MoviesList from '../../components/MoviesList/index';
 import Modal from '../../components/Modal/index.js';
 import Header from '../../components/Header/index';
+import Paginator from '../../components/Paginator/index.js';
 import './style.scss';
 
 function Home() {
@@ -17,14 +18,11 @@ function Home() {
   const [searcDataList, setSearchDataList] = useState([]);
   const [favoriteData, setFavoriteData] = useState([]);
   const [toggleFavorite, setToggleFavorite] = useState(false);
+  const [page, setPage] = useState({ start: 1, end: 0 });
 
-  const searchMovies = async () => {
-    const data = await getSearchResult(searchText, language);
-    if (data !== undefined) {
-      setSearchDataList(data.results);
-    } else {
-      console.log('Мы не получили данных');
-    }
+  const getActorList = async () => {
+    const data = await getPersonalActor(language, '1');
+    // console.log('data :>> ', data);
   };
 
   useEffect(() => {
@@ -32,23 +30,33 @@ function Home() {
       ? JSON.parse(localStorage.getItem('items'))
       : [];
     setFavoriteData(itemsArray);
+    getActorList();
   }, []);
 
   useEffect(() => {
+    const searchMovies = async () => {
+      const data = await getSearchResult(searchText, language);
+      if (data !== undefined) {
+        setSearchDataList(data.results);
+      } else {
+        console.log('Мы не получили данных');
+      }
+    };
     searchMovies();
   }, [searchText, language]);
 
   useEffect(() => {
     const getMovies = async () => {
-      const data = await getData(category, language);
+      const data = await getData(category, language, page.start);
       if (data !== undefined) {
         setMovies(data.results);
+        setPage({ ...page, start: data.page, end: data.total_pages });
       } else {
         console.log('Мы не получили данных');
       }
     };
     getMovies();
-  }, [category, language]);
+  }, [category, language, page.start]);
 
   const switchCategory = (category, title) => {
     setCateory(category);
@@ -98,6 +106,15 @@ function Home() {
     }
   };
 
+  const nextPage = () => {
+    if (page.end > page.start) setPage({ ...page, start: page.start + 1 });
+  };
+
+  const PrevPage = () => {
+    if (page.start > 1) {
+      setPage({ ...page, start: Math.max(0, page.start - 1) });
+    }
+  };
   return (
     <div className="home">
       <Header
@@ -120,6 +137,7 @@ function Home() {
         addFavorite={addFavorite}
       />
       <Modal oepnModal={oepnModal} modalData={modalData} closeModal={closeModal} />
+      <Paginator nextPage={nextPage} PrevPage={PrevPage} page={page} />
     </div>
   );
 }

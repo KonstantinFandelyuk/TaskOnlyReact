@@ -1,23 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const DefaultImage = styled.div`
-  height: calc(900px - 17px);
-  background-image: url("/images/slider/wallpeper.png");
-  background-repeat: no-repeat;
-  background-position: top center;
-  position: relative;
+const SlideImage = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
 `;
-const HeroTitle = styled.h1`
-  color: whitesmoke;
-  font-size: 13rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-shadow: 6px 4px 3px rgba(0, 0, 0, 0.46);
-  text-decoration-color: transparent;
-  font-weight: 400;
-  width: 80%;
+const SlideText = styled.div`
   text-align: center;
+  margin: 15px 0;
 `;
-export { DefaultImage, HeroTitle };
+export { SlideImage, SlideText };
