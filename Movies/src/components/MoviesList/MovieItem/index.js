@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from 'react';
 import {
   switchDate,
   switchImageFront,
   switchImageBack,
   defaultNoImage,
-} from "../../../helpers/helpers";
-import { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite } from "./style";
+} from '../../../helpers/helpers';
+import { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite } from './style';
+import { Context } from '../../../context/Context';
 
-function MovieItem({ item, openModalScreen, addFavorite }) {
+const MovieItem = ({ item }) => {
+  const { openModalScreen, addFavorite } = useContext(Context);
   return (
     <FilmItem className="flims-item">
       <FilmImage className="film-image">
@@ -48,6 +50,6 @@ function MovieItem({ item, openModalScreen, addFavorite }) {
       </FilmFavorite>
     </FilmItem>
   );
-}
+};
 
 export default MovieItem;

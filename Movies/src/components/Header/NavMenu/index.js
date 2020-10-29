@@ -20,24 +20,25 @@ const NavMenu = () => {
     searcDataList,
     setSearchText,
     switchCategory,
+    language,
   } = useContext(Context);
 
   return (
     <nav className="nav">
       <NavList className="nav__list">
         <NavListItem className="nav__list-item">
-          <Link to="/films">
+          <Link to="/films/">
             <LinkSpan>Фильмы</LinkSpan>
           </Link>
         </NavListItem>
         <NavListItem className="nav__list-item">
-          <Link to="/tv-show">
+          <Link to="/tv-show/">
             <LinkSpan>Сериалы</LinkSpan>
           </Link>
           <NavListDropDown className="dropDown">
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/popular"
+                to="/tv-show/popular/"
                 onClick={() => {
                   switchCategory('popular', 'Популярные сериалы');
                 }}
@@ -47,7 +48,7 @@ const NavMenu = () => {
             </NavListItem>
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/on-today"
+                to="/tv-show/on-today/"
                 onClick={() => {
                   switchCategory('on_the_air', 'В эфире сегодня');
                 }}
@@ -58,7 +59,7 @@ const NavMenu = () => {
             <NavListItem dropLi={true}>По телевидению</NavListItem>
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/top-rate"
+                to="/tv-show/top-rate/"
                 onClick={() => {
                   switchCategory('top_rated', 'Топовые сериалы за неделю');
                 }}
@@ -93,6 +94,7 @@ const NavMenu = () => {
         <NavListItem>
           <div className="switch-langvich">
             <LanSwitch
+              style={{ color: language === 'ru-RU' ? 'red' : 'white' }}
               onClick={() => {
                 switchLanguage('ru-RU');
               }}
@@ -100,6 +102,7 @@ const NavMenu = () => {
               RU
             </LanSwitch>
             <LanSwitch
+              style={{ color: language === 'en-US' ? 'red' : 'white' }}
               onClick={() => {
                 switchLanguage('en-US');
               }}

@@ -1,17 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import ActorsList from '../components/ActorsList';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import Actors from '../page/Actors/index';
 import Home from '../page/Home/index';
 
 function Routers() {
   return (
-    <>
-      <Router>
+    <Router>
+      <Switch>
         <Route path="/" component={Home} />
-        {/* <ActorsList path="/actors/" component={ActorsList} /> */}
-        <Redirect from="/" to="/" />
-      </Router>
-    </>
+        <Route path="/actors" component={Actors} />
+      </Switch>
+      {/* <Redirect from="/" to="/" /> */}
+    </Router>
   );
 }
 

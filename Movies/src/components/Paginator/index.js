@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, NextPageButton, PrevPageButton } from './style';
+import { Context } from '../../context/Context';
 
-function Paginator({ nextPage, page, PrevPage }) {
+function Paginator() {
+  const { nextPage, PrevPage } = useContext(Context);
   return (
     <Container>
       <PrevPageButton type="button" onClick={PrevPage}>

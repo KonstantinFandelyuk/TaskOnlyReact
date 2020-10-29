@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   ModalElement,
   ModalBG,
@@ -11,8 +11,10 @@ import {
 } from './style';
 import Slider from '../Slider/index';
 import { sliceDate } from '../../helpers/helpers';
+import { Context } from '../../context/Context';
 
-function Modal({ oepnModal, modalData, closeModal }) {
+function Modal() {
+  const { oepnModal, modalData, closeModal } = useContext(Context);
   return (
     <ModalElement className={`modal ${oepnModal}`} active={oepnModal}>
       <ModalBG>
