@@ -5,6 +5,7 @@ import MoviesList from '../../components/MoviesList/index';
 import Modal from '../../components/Modal/index.js';
 import Header from '../../components/Header/index';
 import Paginator from '../../components/Paginator/index.js';
+import { Context } from '../../context/Context';
 import './style.scss';
 
 function Home() {
@@ -19,10 +20,15 @@ function Home() {
   const [favoriteData, setFavoriteData] = useState([]);
   const [toggleFavorite, setToggleFavorite] = useState(false);
   const [page, setPage] = useState({ start: 1, end: 0 });
+  const [actorsData, setActorsDatta] = useState([]);
 
   const getActorList = async () => {
-    const data = await getPersonalActor(language, '1');
-    // console.log('data :>> ', data);
+    const data = await getPersonalActor(language, page.start);
+    if (data !== undefined) {
+      setActorsDatta(data.results);
+    } else {
+      console.log('Мы не получили данных');
+    }
   };
 
   useEffect(() => {
@@ -30,7 +36,6 @@ function Home() {
       ? JSON.parse(localStorage.getItem('items'))
       : [];
     setFavoriteData(itemsArray);
-    getActorList();
   }, []);
 
   useEffect(() => {
@@ -56,6 +61,7 @@ function Home() {
       }
     };
     getMovies();
+    getActorList();
   }, [category, language, page.start]);
 
   const switchCategory = (category, title) => {
@@ -116,29 +122,33 @@ function Home() {
     }
   };
   return (
-    <div className="home">
-      <Header
-        switchCategory={switchCategory}
-        switchLanguage={switchLanguage}
-        setSearchText={setSearchText}
-        searcDataList={searcDataList}
-        toggleFavorite={toggleFavorite}
-        setToggleFavorite={setToggleFavorite}
-        openModalScreen={openModalScreen}
-        favoriteData={favoriteData}
-      />
-      <main>
-        <Slider />
-      </main>
-      <MoviesList
-        movies={movies}
-        openModalScreen={openModalScreen}
-        titleCategory={titleCategory}
-        addFavorite={addFavorite}
-      />
-      <Modal oepnModal={oepnModal} modalData={modalData} closeModal={closeModal} />
-      <Paginator nextPage={nextPage} PrevPage={PrevPage} page={page} />
-    </div>
+    <Context.Provider
+      value={{
+        switchLanguage,
+        openModalScreen,
+        setToggleFavorite,
+        setSearchText,
+        switchCategory,
+        favoriteData,
+        toggleFavorite,
+        searcDataList,
+      }}
+    >
+      <div className="home">
+        <Header />
+        <main>
+          <Slider />
+        </main>
+        <MoviesList
+          movies={movies}
+          openModalScreen={openModalScreen}
+          titleCategory={titleCategory}
+          addFavorite={addFavorite}
+        />
+        <Modal oepnModal={oepnModal} modalData={modalData} closeModal={closeModal} />
+        <Paginator nextPage={nextPage} PrevPage={PrevPage} page={page} />
+      </div>
+    </Context.Provider>
   );
 }
 

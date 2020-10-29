@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FilmItem = styled.li`
   position: relative;
@@ -44,7 +44,7 @@ const FilmName = styled.div`
 
 const FilmFavorite = styled.div`
   position: absolute;
-  max-width: 35px;
+  max-width: 30px;
   top: -3%;
   left: -4%;
   z-index: 10;

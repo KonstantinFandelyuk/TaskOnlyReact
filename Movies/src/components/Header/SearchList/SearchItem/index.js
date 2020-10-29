@@ -1,9 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { switchDate } from "../../../../helpers/helpers";
-import { Item, ItemName, ItemImage } from "./style";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { switchDate } from '../../../../helpers/helpers';
+import { Context } from '../../../../context/Context';
+import { Item, ItemName, ItemImage } from './style';
 
-function SearchItem({ item, openModalScreen }) {
+function SearchItem({ item }) {
+  const { openModalScreen } = useContext(Context);
   return (
     <>
       <Item onClick={() => openModalScreen(item.id, item.vote_average, item.popularity)}>
@@ -12,7 +14,7 @@ function SearchItem({ item, openModalScreen }) {
           <ItemImage>
             <img
               src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
-                item.poster_path !== "" ? item.poster_path : "Нет фото"
+                item.poster_path !== '' ? item.poster_path : 'Нет фото'
               }`}
               alt=""
             />

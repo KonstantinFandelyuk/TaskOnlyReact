@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   NavList,
@@ -10,15 +10,18 @@ import {
   LanSwitch,
   Favorites,
 } from './style';
+import { Context } from '../../../context/Context';
 
-function NavMenu({
-  switchCategory,
-  switchLanguage,
-  setSearchText,
-  searcDataList,
-  setToggleFavorite,
-  favoriteData,
-}) {
+const NavMenu = () => {
+  const {
+    switchLanguage,
+    favoriteData,
+    setToggleFavorite,
+    searcDataList,
+    setSearchText,
+    switchCategory,
+  } = useContext(Context);
+
   return (
     <nav className="nav">
       <NavList className="nav__list">
@@ -66,7 +69,7 @@ function NavMenu({
           </NavListDropDown>
         </NavListItem>
         <NavListItem className="nav__list-item">
-          <Link to="/actors">
+          <Link to="/actors/">
             <LinkSpan>Актеры</LinkSpan>
           </Link>
         </NavListItem>
@@ -120,6 +123,6 @@ function NavMenu({
       </NavList>
     </nav>
   );
-}
+};
 
 export default NavMenu;

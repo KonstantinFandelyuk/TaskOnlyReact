@@ -1,12 +1,13 @@
 import React from 'react';
 import ActorsItem from './ActorsItem/index';
 
-function ActorsList() {
+const arrTest = [1, 2, 3, 4, 5, 6];
+function ActorsList(props) {
   return (
     <div>
       <ul>
-        {arr.map((item) => (
-          <ActorsItem />
+        {arrTest.map((item, index) => (
+          <ActorsItem item={item} key={index} />
         ))}
       </ul>
     </div>

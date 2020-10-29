@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FavoriteItem from './FavoriteItem/index';
+import { Context } from '../../../context/Context';
 import { Favorite, FavoriteBG, FavoriteTitle, ModalClose } from './style';
 
-const FavoriteList = ({ setToggleFavorite, favoriteData }) => {
+const FavoriteList = () => {
+  const { favoriteData, setToggleFavorite } = useContext(Context);
   return (
     <Favorite>
       <FavoriteBG>
