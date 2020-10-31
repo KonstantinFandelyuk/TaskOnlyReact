@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const NavList = styled.ul`
   display: flex;
@@ -23,9 +23,9 @@ const NavListDropDown = styled.ul`
 `;
 
 const NavListItem = styled.li`
-  margin-right: ${(props) => (props.dropLi ? "0" : "45px")};
+  margin-right: ${(props) => (props.dropLi ? '0' : '45px')};
   position: relative;
-  margin-bottom: ${(props) => (props.dropLi ? "10px" : "0")};
+  margin-bottom: ${(props) => (props.dropLi ? '10px' : '0')};
   &:hover > .dropDown {
     opacity: 1;
     visibility: visible;
@@ -36,8 +36,8 @@ const NavListItem = styled.li`
 const HeaderForm = styled.form`
   position: relative;
   &::after {
-    content: "";
-    background-image: url("/images/icons/search.png");
+    content: '';
+    background-image: url('/images/icons/search.png');
     background-repeat: no-repeat;
     position: absolute;
     top: 50%;
@@ -65,9 +65,22 @@ const SerachInput = styled.input`
 const LinkSpan = styled.span`
   color: white;
 `;
+
 const LanSwitch = styled.div`
   cursor: pointer;
 `;
+
+const ThemeSwitch = styled.div`
+  cursor: pointer;
+  background-image: ${(props) =>
+    props.colorTheme
+      ? 'url(../images/header/theme/white.png)'
+      : 'url(../images/header/theme/dark.png)'};
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+`;
+
 const Favorites = styled.div`
   width: 40px;
   cursor: pointer;
@@ -82,4 +95,5 @@ export {
   NavListDropDown,
   LanSwitch,
   Favorites,
+  ThemeSwitch,
 };

@@ -17,6 +17,8 @@ function App() {
   const [searcDataList, setSearchDataList] = useState([]);
   const [favoriteData, setFavoriteData] = useState([]);
   const [toggleFavorite, setToggleFavorite] = useState(false);
+  const [theme, setTheme] = useState(false);
+
   useEffect(() => {
     const itemsArray = localStorage.getItem('items')
       ? JSON.parse(localStorage.getItem('items'))
@@ -106,6 +108,16 @@ function App() {
       setPage({ ...page, start: Math.max(0, page.start - 1) });
     }
   };
+
+  const switchTheme = () => {
+    if (theme === false) {
+      setTheme(true);
+    } else {
+      setTheme(false);
+    }
+  };
+
+  console.log('theme', theme);
   return (
     <Context.Provider
       value={{
@@ -127,6 +139,8 @@ function App() {
         titleCategory,
         modalData,
         movies,
+        switchTheme,
+        theme,
       }}
     >
       <Header />
