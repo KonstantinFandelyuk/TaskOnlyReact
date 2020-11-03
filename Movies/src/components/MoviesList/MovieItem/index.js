@@ -28,7 +28,9 @@ const MovieItem = ({ item }) => {
           }}
         />
       </FilmImage>
-      <FilmAverage className="film-average">{item.vote_average}</FilmAverage>
+      {item.vote_average > 0 ? (
+        <FilmAverage className="film-average">{item.vote_average}</FilmAverage>
+      ) : null}
       <FilmDate className="film-date" colorTheme={theme}>
         {switchDate(item.first_air_date)}
       </FilmDate>

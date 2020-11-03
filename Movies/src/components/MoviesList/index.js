@@ -4,11 +4,11 @@ import { H2Title, FilmsList } from './style';
 import { Context } from '../../context/Context';
 
 const MoviesList = () => {
-  const { movies, titleCategory } = useContext(Context);
+  const { movies, titleCategory, theme } = useContext(Context);
   return (
     <section className="section">
       <div className="container">
-        <H2Title>{titleCategory}</H2Title>
+        <H2Title colorTheme={theme}>{titleCategory}</H2Title>
         <div className="films">
           <FilmsList className="films-list">
             {movies.map((item, index) => {

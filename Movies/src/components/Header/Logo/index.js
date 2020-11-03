@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { LogoList, LogoText, LogoListItem } from "./style";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { LogoList, LogoText, LogoListItem } from './style';
 
 function Logo() {
   return (
@@ -8,7 +8,7 @@ function Logo() {
       <div className="logo">
         <LogoList className="logo__list">
           <LogoListItem className="logo__list-item" active>
-            <Link to="/">
+            <Link to="/home">
               <img src="/images/header/logo.png" alt="" className="image-logo" />
             </Link>
           </LogoListItem>

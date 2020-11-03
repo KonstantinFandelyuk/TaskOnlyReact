@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import SearchList from './SearchList/index';
 import {
   NavList,
   NavListItem,
@@ -11,6 +12,7 @@ import {
   Favorites,
   ThemeSwitch,
 } from './style';
+
 import { Context } from '../../../context/Context';
 
 const NavMenu = () => {
@@ -35,13 +37,15 @@ const NavMenu = () => {
           </Link>
         </NavListItem>
         <NavListItem className="nav__list-item">
-          <Link to="/tv-show">
+          <Link
+          //  to="/tv-show"
+          >
             <LinkSpan>Сериалы</LinkSpan>
           </Link>
           <NavListDropDown className="dropDown">
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/popular/"
+                // to="/tv-show/popular/"
                 onClick={() => {
                   switchCategory('popular', 'Популярные сериалы');
                 }}
@@ -51,7 +55,7 @@ const NavMenu = () => {
             </NavListItem>
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/on-today"
+                // to="/tv-show/on-today"
                 onClick={() => {
                   switchCategory('on_the_air', 'В эфире сегодня');
                 }}
@@ -62,7 +66,7 @@ const NavMenu = () => {
             <NavListItem dropLi={true}>По телевидению</NavListItem>
             <NavListItem dropLi={true}>
               <Link
-                to="/tv-show/top-rate"
+                // to="/tv-show/top-rate"
                 onClick={() => {
                   switchCategory('top_rated', 'Топовые сериалы за неделю');
                 }}
@@ -137,6 +141,7 @@ const NavMenu = () => {
           </Favorites>
         </NavListItem>
       </NavList>
+      {searcDataList ? <SearchList /> : null}
     </nav>
   );
 };

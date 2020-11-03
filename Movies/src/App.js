@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getData, getDescriptionData, getSearchResult, getPersonalActor } from './api/api.js';
-import Footer from './components/Footer/Footer';
 import Routers from './router/index';
 import { Context } from './context/Context';
-import Header from './components/Header/index.js';
 
 function App() {
   const [language, setLanguage] = useState('ru-RU');
@@ -18,6 +16,7 @@ function App() {
   const [favoriteData, setFavoriteData] = useState([]);
   const [toggleFavorite, setToggleFavorite] = useState(false);
   const [theme, setTheme] = useState(false);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const itemsArray = localStorage.getItem('items')
@@ -117,7 +116,6 @@ function App() {
     }
   };
 
-  console.log('theme', theme);
   return (
     <Context.Provider
       value={{
@@ -141,11 +139,11 @@ function App() {
         movies,
         switchTheme,
         theme,
+        token,
+        setToken,
       }}
     >
-      <Header />
       <Routers />
-      <Footer />
     </Context.Provider>
   );
 }
