@@ -16,15 +16,36 @@ const Login = () => {
   const { setToken } = useContext(Context);
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
-  const [check, setCheck] = useState(true);
+  const [validationName, setValidationName] = useState(true);
+  const [validationPassword, setValidationNamePassword] = useState(true);
+
+  const checkName = () => {
+    if (userName === 'admin') {
+      setValidationName(true);
+      return true;
+    } else {
+      setValidationName(false);
+      return false;
+    }
+  };
+
+  const checPassword = () => {
+    if (userPassword === 'admin') {
+      setValidationNamePassword(true);
+      return true;
+    } else {
+      setValidationNamePassword(false);
+      return false;
+    }
+  };
 
   const checkUser = (e) => {
     e.preventDefault();
-    if (userName === 'admin' && userPassword === 'admin') {
+    checkName();
+    checPassword();
+    if (checkName() && checPassword()) {
       setToken('d066da765285ecde606037392054558a');
       sessionStorage.setItem('userID', 'd066da765285ecde606037392054558a');
-    } else {
-      setCheck(false);
     }
   };
 
@@ -36,7 +57,7 @@ const Login = () => {
           <form name="my">
             <ul>
               <LiItem>
-                <Label for="login">{check ? null : 'Ошибка'}</Label>
+                <Label for="login">{validationName ? null : 'Ошибка'}</Label>
                 <Input
                   type="text"
                   id="login"
@@ -45,7 +66,7 @@ const Login = () => {
                 />
               </LiItem>
               <LiItem>
-                <Label for="password">{check ? null : 'Ошибка'}</Label>
+                <Label for="password">{validationPassword ? null : 'Ошибка'}</Label>
                 <Input
                   type="password"
                   id="password"

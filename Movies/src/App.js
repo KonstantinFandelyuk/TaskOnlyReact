@@ -97,6 +97,13 @@ function App() {
       e.target.src = '/images/icons/default.png';
     }
   };
+  const dellFavorite = (id) => {
+    localStorage.removeItem('items');
+    const newFavortit = favoriteData.filter((item) => item.id !== id).map((item) => item);
+    localStorage.setItem('items', JSON.stringify(newFavortit));
+    setFavoriteData(newFavortit);
+    return newFavortit;
+  };
 
   const nextPage = () => {
     if (page.end > page.start) setPage({ ...page, start: page.start + 1 });
@@ -141,6 +148,7 @@ function App() {
         theme,
         token,
         setToken,
+        dellFavorite,
       }}
     >
       <Routers />

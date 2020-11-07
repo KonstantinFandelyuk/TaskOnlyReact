@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { defaultNoImage } from '../../../../helpers/helpers';
 import { Item, ItemImage, ItemAverage } from './style';
+import { Context } from '../../../../context/Context';
 
 const FavoriteItem = ({ item }) => {
+  const { dellFavorite } = useContext(Context);
   return (
     <Item>
       <ItemAverage>{item.average}</ItemAverage>
@@ -17,6 +19,7 @@ const FavoriteItem = ({ item }) => {
           alt={`${item.name}`}
         />
       </ItemImage>
+      <button onClick={() => dellFavorite(item.id)}>Dell</button>
     </Item>
   );
 };

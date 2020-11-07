@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const Item = styled.li`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   gap: 1px 1px;
-  grid-template-areas: '. . .';
+  grid-template-areas: '. . . .';
   padding: 10px 0;
   border-radius: 5px;
   margin-bottom: 15px;

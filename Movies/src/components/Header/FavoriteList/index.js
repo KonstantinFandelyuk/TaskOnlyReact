@@ -5,6 +5,7 @@ import { Favorite, FavoriteBG, FavoriteTitle, ModalClose } from './style';
 
 const FavoriteList = () => {
   const { favoriteData, setToggleFavorite } = useContext(Context);
+  console.log('favoriteData :>> ', favoriteData);
   return (
     <Favorite>
       <FavoriteBG>
