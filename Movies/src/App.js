@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getData, getDescriptionData, getSearchResult, getPersonalActor } from './api/api.js';
+import { getData, getDescriptionData, getSearchResult } from './api/api.js';
 import Routers from './router/index';
 import { Context } from './context/Context';
 

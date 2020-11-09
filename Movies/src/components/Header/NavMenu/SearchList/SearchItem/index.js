@@ -9,17 +9,17 @@ function SearchItem({ item }) {
   return (
     <>
       <Item onClick={() => openModalScreen(item.id, item.vote_average, item.popularity)}>
-        <Link to={`/tv-show/${item.id}`}>
-          <ItemName>{`${item.name} ${switchDate(item.first_air_date)}`}</ItemName>
-          <ItemImage>
-            <img
-              src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
-                item.poster_path !== '' ? item.poster_path : 'Нет фото'
-              }`}
-              alt=""
-            />
-          </ItemImage>
-        </Link>
+        {/* <Link to={`/tv-show/${item.id}`}> */}
+        <ItemName>{`${item.name} ${switchDate(item.first_air_date)}`}</ItemName>
+        <ItemImage>
+          <img
+            src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
+              item.poster_path !== '' ? item.poster_path : 'Нет фото'
+            }`}
+            alt=""
+          />
+        </ItemImage>
+        {/* </Link> */}
       </Item>
     </>
   );
