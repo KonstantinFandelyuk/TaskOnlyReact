@@ -40,7 +40,6 @@ const FilmName = styled.div`
   padding: 8px;
   font-weight: bold;
   font-size: 1.5rem;
-  color: ${(props) => (props.colorTheme ? 'white' : 'black')};
 `;
 
 const FilmFavorite = styled.div`
@@ -57,8 +56,6 @@ const FilmDate = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-  background: ${(props) => (props.colorTheme ? 'black' : 'white')};
-  color: ${(props) => (props.colorTheme ? 'white' : 'black')};
   border: 1px solid #a7a7a757;
   padding: 5px;
 `;

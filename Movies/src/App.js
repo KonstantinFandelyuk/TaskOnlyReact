@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getData, getDescriptionData, getSearchResult } from './api/api.js';
 import Routers from './router/index';
 import { Context } from './context/Context';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './style/style';
 
 function App() {
   const [language, setLanguage] = useState('ru-RU');
@@ -15,8 +17,8 @@ function App() {
   const [searcDataList, setSearchDataList] = useState([]);
   const [favoriteData, setFavoriteData] = useState([]);
   const [toggleFavorite, setToggleFavorite] = useState(false);
-  const [theme, setTheme] = useState(false);
   const [token, setToken] = useState(null);
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const itemsArray = localStorage.getItem('items')
@@ -116,43 +118,46 @@ function App() {
   };
 
   const switchTheme = () => {
-    if (theme === false) {
-      setTheme(true);
+    if (theme === 'light') {
+      setTheme('dark');
     } else {
-      setTheme(false);
+      setTheme('light');
     }
   };
 
   return (
-    <Context.Provider
-      value={{
-        switchLanguage,
-        openModalScreen,
-        setToggleFavorite,
-        setSearchText,
-        switchCategory,
-        addFavorite,
-        favoriteData,
-        toggleFavorite,
-        searcDataList,
-        language,
-        page,
-        PrevPage,
-        nextPage,
-        closeModal,
-        oepnModal,
-        titleCategory,
-        modalData,
-        movies,
-        switchTheme,
-        theme,
-        token,
-        setToken,
-        dellFavorite,
-      }}
-    >
-      <Routers />
-    </Context.Provider>
+    <ThemeProvider theme={{ mode: theme }}>
+      <Context.Provider
+        value={{
+          switchLanguage,
+          openModalScreen,
+          setToggleFavorite,
+          setSearchText,
+          switchCategory,
+          addFavorite,
+          favoriteData,
+          toggleFavorite,
+          searcDataList,
+          language,
+          page,
+          PrevPage,
+          nextPage,
+          closeModal,
+          oepnModal,
+          titleCategory,
+          modalData,
+          movies,
+          switchTheme,
+          theme,
+          token,
+          setToken,
+          dellFavorite,
+        }}
+      >
+        <GlobalStyle />
+        <Routers />
+      </Context.Provider>
+    </ThemeProvider>
   );
 }
 

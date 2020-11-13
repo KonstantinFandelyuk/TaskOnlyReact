@@ -5,7 +5,6 @@ const H2Title = styled.h2`
   font-size: 5rem;
   font-weight: 400;
   margin-bottom: 40px;
-  color: ${(props) => (props.colorTheme ? 'white' : 'black')};
 `;
 
 const FilmsList = styled.ul`

@@ -7,7 +7,7 @@ import { NavList, H2Title } from './style';
 function ActorsList() {
   const [actors, setActors] = useState([]);
   const [titleCategory, setTitleCategory] = useState('Актеры');
-  const { language, page, theme } = useContext(Context);
+  const { language, page } = useContext(Context);
 
   useEffect(() => {
     const getDataActors = async () => {
@@ -22,8 +22,8 @@ function ActorsList() {
   }, []);
 
   return (
-    <div colorTheme={theme}>
-      <H2Title colorTheme={theme}>{titleCategory}</H2Title>
+    <div>
+      <H2Title>{titleCategory}</H2Title>
       <div className="container">
         <NavList>
           {actors.map((item, index) => (

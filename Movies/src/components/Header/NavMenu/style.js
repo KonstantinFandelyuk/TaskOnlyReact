@@ -73,7 +73,7 @@ const LanSwitch = styled.div`
 const ThemeSwitch = styled.div`
   cursor: pointer;
   background-image: ${(props) =>
-    props.colorTheme
+    props.switchIconTheme === 'light'
       ? 'url(../images/header/theme/white.png)'
       : 'url(../images/header/theme/dark.png)'};
   background-repeat: no-repeat;

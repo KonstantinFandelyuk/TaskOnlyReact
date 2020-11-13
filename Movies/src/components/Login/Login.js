@@ -71,8 +71,11 @@ const Login = () => {
               <Form>
                 <ul>
                   <LiItem>
-                    <Label for="login">{errors.login && <span>{errors.login}</span>}</Label>
+                    <Label for="login">
+                      {errors.login && touched && <span>{errors.login}</span>}
+                    </Label>
                     <Input
+                      id="login"
                       name="login"
                       type="login"
                       onChange={handleChange}
@@ -82,14 +85,16 @@ const Login = () => {
                   </LiItem>
                   <LiItem>
                     <Label for="password">
-                      {errors.password && <span>{errors.password}</span>}
+                      {errors.password && touched && <span>{errors.password}</span>}
                     </Label>
                     <Input
+                      id="password"
                       name="password"
                       type="password"
                       onChange={handleChange}
                       value={values.password}
                       placeholder="Ваш Password"
+                      // errors={errors}
                     />
                   </LiItem>
                 </ul>

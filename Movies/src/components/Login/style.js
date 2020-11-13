@@ -45,6 +45,7 @@ const Input = styled.input`
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
+  border: 1px solid grey;
 `;
 
 const Button = styled.button`

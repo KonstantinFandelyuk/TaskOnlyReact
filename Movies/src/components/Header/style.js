@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
   background: #032541;
@@ -13,7 +13,7 @@ const HeaderList = styled.div`
 `;
 
 const HeaderListItem = styled.div`
-  flex-basis: ${(props) => (props.logo ? "5%" : "70%")};
+  flex-basis: ${(props) => (props.logo ? '5%' : '70%')};
   position: relative;
 `;
 

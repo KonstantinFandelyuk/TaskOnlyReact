@@ -15,8 +15,8 @@ const Drpo = styled.div`
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 125px;
-  background: black;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   border-radius: 5px;
   padding: 10px 5px;

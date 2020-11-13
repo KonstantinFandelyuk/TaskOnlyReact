@@ -9,7 +9,7 @@ import { FilmItem, FilmImage, FilmAverage, FilmName, FilmDate, FilmFavorite } fr
 import { Context } from '../../../context/Context';
 
 const MovieItem = ({ item }) => {
-  const { openModalScreen, addFavorite, theme } = useContext(Context);
+  const { openModalScreen, addFavorite } = useContext(Context);
   return (
     <FilmItem className="flims-item">
       <FilmImage className="film-image">
@@ -31,11 +31,8 @@ const MovieItem = ({ item }) => {
       {item.vote_average > 0 ? (
         <FilmAverage className="film-average">{item.vote_average}</FilmAverage>
       ) : null}
-      <FilmDate className="film-date" colorTheme={theme}>
-        {switchDate(item.first_air_date)}
-      </FilmDate>
+      <FilmDate className="film-date">{switchDate(item.first_air_date)}</FilmDate>
       <FilmName
-        colorTheme={theme}
         onClick={(e) => {
           openModalScreen(item.id, item.vote_average, item.popularity);
         }}

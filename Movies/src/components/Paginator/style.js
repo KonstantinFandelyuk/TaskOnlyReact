@@ -11,11 +11,13 @@ const Container = styled.div`
 const NextPageButton = styled.button`
   background: transparent;
   position: relative;
+  color:${(props) => (props.theme.mode === 'dark' ? '#fff' : 'black')};
 }
 `;
 const PrevPageButton = styled.button`
   background: transparent;
   position: relative;
+  color: ${(props) => (props.theme.mode === 'dark' ? '#fff' : 'black')};
 `;
 
 export { Container, NextPageButton, PrevPageButton };

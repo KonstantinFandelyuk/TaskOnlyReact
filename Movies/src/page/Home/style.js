@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const HomeBackground = styled.div`
-  background: ${(props) => (props.colorTheme ? 'black' : 'white')};
-`;
+const HomePage = styled.div``;
 
-export { HomeBackground };
+export { HomePage };

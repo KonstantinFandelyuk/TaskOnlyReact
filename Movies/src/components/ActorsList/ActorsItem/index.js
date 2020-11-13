@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavListItem, ActorName, ActorCard, ActorInfo, Drpo } from './style';
+import ReactStars from 'react-rating-stars-component';
 
 function ActorsItem({ item }) {
   const switchGender = (gender) => {
@@ -15,8 +16,17 @@ function ActorsItem({ item }) {
       <ActorCard>
         <ActorInfo>i</ActorInfo>
         <Drpo className="infoAcmenu">
-          <div>{switchGender(item.gender)}</div>
-          <div>Rating: {Math.floor(item.popularity)}</div>
+          <div>
+            Rating:
+            <ReactStars
+              count={item.popularity / 10}
+              size={16}
+              edit={false}
+              activeColor="yellow"
+              color="yellow"
+            />
+          </div>
+          <div style={{ marginRight: '15px' }}>{switchGender(item.gender)}</div>
         </Drpo>
         <div className="img">
           <img src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`} alt="" />
@@ -28,12 +38,3 @@ function ActorsItem({ item }) {
 }
 
 export default ActorsItem;
-
-// adult: false
-// gender: 1
-// id: 4494
-// known_for: (3) [{…}, {…}, {…}]
-// known_for_department: "Acting"
-// name: "Lisa Ann Walter"
-// popularity: 56.512
-// profile_path: "/p3wxUblbPwRVzTp7jW1lXISKIob.jpg"

@@ -121,7 +121,7 @@ const NavMenu = () => {
         <NavListItem>
           <div className="switch-theme">
             <ThemeSwitch
-              colorTheme={theme}
+              switchIconTheme={theme}
               onClick={() => {
                 switchTheme(false);
               }}
