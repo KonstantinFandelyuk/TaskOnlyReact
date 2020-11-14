@@ -25,14 +25,24 @@ const FilmAverage = styled.div`
   top: -15px;
   right: -10px;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  /* width: 40px; */
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: white;
   font-weight: 500;
-  background: white;
+  /* background: white; */
+  height: 20px;
+  background: linear-gradient(to right, black 40%, transparent 0);
+  background-color: green;
+  font-weight: 900;
+  width: 30px;
+  height: 30px;
+  /* background-image: conic-gradient(deeppink 10%, transparent 0); */
+  background-image: ${(props) => `conic-gradient(black ${props.average}%, transparent 0)`};
+  border-radius: 50%;
+  border: 1px solid whitesmoke;
 `;
 
 const FilmName = styled.div`

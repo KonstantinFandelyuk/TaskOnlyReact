@@ -11,8 +11,8 @@ import { Context } from '../../../context/Context';
 const MovieItem = ({ item }) => {
   const { openModalScreen, addFavorite } = useContext(Context);
   return (
-    <FilmItem className="flims-item">
-      <FilmImage className="film-image">
+    <FilmItem>
+      <FilmImage>
         <img
           src={
             item.poster_path
@@ -29,9 +29,9 @@ const MovieItem = ({ item }) => {
         />
       </FilmImage>
       {item.vote_average > 0 ? (
-        <FilmAverage className="film-average">{item.vote_average}</FilmAverage>
+        <FilmAverage average={item.vote_average * 10}>{item.vote_average}</FilmAverage>
       ) : null}
-      <FilmDate className="film-date">{switchDate(item.first_air_date)}</FilmDate>
+      <FilmDate>{switchDate(item.first_air_date)}</FilmDate>
       <FilmName
         onClick={(e) => {
           openModalScreen(item.id, item.vote_average, item.popularity);
@@ -39,7 +39,7 @@ const MovieItem = ({ item }) => {
       >
         {item.name}
       </FilmName>
-      <FilmFavorite className="film-name">
+      <FilmFavorite>
         <img
           data-id={item.id}
           src="/images/icons/default.png"
