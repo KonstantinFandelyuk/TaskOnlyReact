@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
-  background: #032541;
+  background-color: ${(props) => (props.theme.mode === 'dark' ? 'black' : '#032541')};
   color: white;
 `;
 

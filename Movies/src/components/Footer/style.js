@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background: #032541;
+  background-color: ${(props) => (props.theme.mode === 'dark' ? 'black' : '#032541')};
   min-height: 80px;
   display: flex;
   justify-content: center;
