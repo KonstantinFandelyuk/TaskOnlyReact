@@ -24,6 +24,9 @@ export const LogIn = observer(() => {
           Ок
         </Button>
       </form>
+      <div style={{ color: "red", textAlign: "center" }}>
+        {UserApi.sessionToken ? null : "Введите корректные данные"}
+      </div>
     </div>
   );
 });

@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 // import { toJS } from "mobx";
 
 class UserAPI {
-  sessionToken = null;
+  sessionToken = this.sessionToken ? this.sessionToken : null;
   userData = {
     username: "",
     password: "",
