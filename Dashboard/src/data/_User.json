@@ -1,0 +1,77 @@
+{
+"results" : [
+
+  {
+    "objectId": "1NSwm6lJ3M",
+    "username": "Andrey",
+    "createdAt": "2020-11-18T18:28:21.016Z",
+    "updatedAt": "2020-11-18T18:57:12.286Z",
+    "title": "I love React",
+    "email": "Andrey@gmail.com",
+    "postNumber": 0,
+    "commentsNumber": 0,
+    "userLikes": 0,
+    "userTask": [
+      "dsds",
+      "dssdsds"
+    ],
+    "isOnline": false,
+    "userSurname": "Grindevald",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "1NSwm6lJ3M": {
+        "read": true,
+        "write": true
+      }
+    }
+  },
+  {
+    "objectId": "MATjYTWgjB",
+    "username": "Pavel",
+    "createdAt": "2020-11-18T18:54:42.444Z",
+    "updatedAt": "2020-11-18T18:57:03.575Z",
+    "email": "Pavel@gmail.com",
+    "title": "I love JS",
+    "postNumber": 0,
+    "commentsNumber": 0,
+    "userLikes": 0,
+    "userTask": [],
+    "isOnline": false,
+    "userSurname": "Potter",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "MATjYTWgjB": {
+        "read": true,
+        "write": true
+      }
+    }
+  },
+  {
+    "objectId": "cJCwFlUd97",
+    "userSurname": "Kameron",
+    "username": "Jhon",
+    "createdAt": "2020-11-18T18:58:05.135Z",
+    "updatedAt": "2020-11-18T18:58:34.993Z",
+    "email": "Jhon@gmail.com",
+    "title": "I love HTML",
+    "postNumber": 0,
+    "commentsNumber": 0,
+    "userLikes": 0,
+    "userTask": [],
+    "isOnline": false,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "cJCwFlUd97": {
+        "read": true,
+        "write": true
+      }
+    }
+  }
+]
+}
