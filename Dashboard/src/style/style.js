@@ -12,7 +12,7 @@ html {
 
 body {
   color: ${(props) => (props.theme.mode === "dark" ? "#fff" : "black")};
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Exo', sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 1.4rem;

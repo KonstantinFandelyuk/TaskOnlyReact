@@ -9,14 +9,14 @@ import { NavBar } from "../components/NavBar";
 import { Messeger } from "../components/Messeger";
 import { DashboadrdBG, List, Item, ItemCenter } from "./style";
 
-export const Routers = observer(() => {
+export const Routers = observer(({ messeger, setMesseger }) => {
   return (
     <Router>
       {UserAPI.sessionToken ? (
         <DashboadrdBG>
           <List>
             <Item>
-              <NavBar />
+              <NavBar setMesseger={setMesseger} messeger={messeger} />
             </Item>
             <ItemCenter>
               <Switch>
@@ -25,7 +25,7 @@ export const Routers = observer(() => {
               </Switch>
             </ItemCenter>
             <Item>
-              <Messeger />
+              <Messeger messeger={messeger} />
             </Item>
           </List>
         </DashboadrdBG>

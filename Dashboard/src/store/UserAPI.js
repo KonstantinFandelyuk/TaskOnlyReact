@@ -52,5 +52,9 @@ class UserAPI {
     const data = await getAllUsers();
     this.userAllList = [...data.results];
   }
+
+  logOut() {
+    sessionStorage.removeItem("user_id");
+  }
 }
 export default new UserAPI();

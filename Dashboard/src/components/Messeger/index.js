@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 import UserAPI from "../../store/UserAPI";
 import DndUpdater from "../../store/DnD";
 
-export const Messeger = observer(() => {
+export const Messeger = observer(({ messeger }) => {
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(UserAPI.userAllList);
@@ -15,7 +15,7 @@ export const Messeger = observer(() => {
     DndUpdater.updateUserListInMsg(items);
   }
   return (
-    <MessegerBG className="Msg">
+    <MessegerBG className="Msg" active={messeger}>
       <TitleContainer>
         <TitleText>Messeger</TitleText>
         <TitleButton>See all</TitleButton>

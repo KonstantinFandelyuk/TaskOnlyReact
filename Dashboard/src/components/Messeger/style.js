@@ -6,6 +6,9 @@ export const MessegerBG = styled.div`
   width: 300px;
   height: 100vh;
   overflow: hidden;
+  position: relative;
+  right: ${(props) => (props.active ? "0" : "-500px")};
+  transition: 0.5s linear;
 `;
 
 export const TitleContainer = styled.div`

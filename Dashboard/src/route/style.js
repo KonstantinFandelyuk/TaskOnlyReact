@@ -6,7 +6,7 @@ export const DashboadrdBG = styled.div`
   margin: 5px 10px;
   height: 98.5vh;
   overflow: hidden;
-  background-color: ${(props) => (props.theme.mode === "dark" ? "black" : "#F5F6F7")};
+  background-color: ${(props) => (props.theme.mode === "dark" ? "#2d2d2d" : "#F5F6F7")};
 `;
 
 export const List = styled.ul`

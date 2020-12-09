@@ -16,10 +16,10 @@ export const GrafBig = styled.div`
 export const MonthlyGrafGoal = styled.div`
   width: 150px;
   max-height: 230px;
-  background-color: #345ef2;
   border-radius: 20px;
   box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.1);
-  color: white;
+  background-color: white;
+  color: black;
   text-align: center;
   margin-right: 40px;
 `;
@@ -37,6 +37,7 @@ export const MonthlyGrafGoalCircle = styled.div`
 `;
 
 export const Average = styled.div`
+  box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.1);
   margin: 10px auto;
   border-radius: 50%;
   display: flex;
@@ -97,13 +98,13 @@ export const LikeImage = styled.img`
   margin-bottom: 10px;
 `;
 export const LikeTitle = styled.div`
-  color: ${(props) => (props.theme.mode === "dark" ? "#345ef2cf" : "black")};
+  color: black;
   font-size: 1.2rem;
   font-style: italic;
   opacity: 0.5;
 `;
 export const LikeNumber = styled.div`
-  color: ${(props) => (props.theme.mode === "dark" ? "#345ef2cf" : "black")};
+  color: black;
   font-size: 2rem;
   margin-bottom: 15px;
   font-weight: 600;

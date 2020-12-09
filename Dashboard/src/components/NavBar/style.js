@@ -7,17 +7,15 @@ export const Nav = styled.nav`
 `;
 
 export const List = styled.ul`
-  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 `;
 
 export const Item = styled.li`
   max-width: 35px;
-  margin-bottom: 50px;
   cursor: pointer;
-`;
-
-export const ItemLogo = styled(Item)`
-  margin-bottom: 60px;
 `;
 
 export const ItemProfile = styled(Item)`

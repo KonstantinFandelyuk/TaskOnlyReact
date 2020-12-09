@@ -1,17 +1,18 @@
 import React from "react";
-import { Item, ItemLogo, Nav, List, ItemProfile } from "./style";
+import { Item, Nav, List, ItemProfile } from "./style";
 import { Link } from "react-router-dom";
 import SwtichTheme from "../../store/SwtichTheme";
+import UserAPI from "../../store/UserAPI";
 
-export const NavBar = () => {
+export const NavBar = ({ setMesseger, messeger }) => {
   return (
     <Nav>
       <List>
-        <ItemLogo>
+        <Item>
           <Link to="/">
             <img src="/images/icon/logo.png" alt="" />
           </Link>
-        </ItemLogo>
+        </Item>
         <Item>
           <Link to="/">
             <img src="/images/icon/app.png" alt="" />
@@ -24,22 +25,15 @@ export const NavBar = () => {
         </Item>
         <Item>
           <Link to="/">
-            <img src="/images/icon/speker.png" alt="" />
-          </Link>
-        </Item>
-        <Item>
-          <Link to="/">
             <img src="/images/icon/services.png" alt="" />
           </Link>
         </Item>
-      </List>
-      <List>
         <Item>
           <Link to="/">
             <img src="/images/icon/cloud.png" alt="" />
           </Link>
         </Item>
-        <Item>
+        <Item onClick={() => setMesseger(messeger ? false : true)}>
           <Link to="/">
             <img src="/images/icon/chat.png" alt="" />
           </Link>
@@ -49,6 +43,11 @@ export const NavBar = () => {
         </ItemProfile>
         <Item onClick={() => SwtichTheme.switchTheme()}>
           <img src="/images/icon/switchTheme.svg" alt="" />
+        </Item>
+        <Item onClick={() => UserAPI.logOut()}>
+          <Link to="/">
+            <img src="/images/icon/power.png" alt="" />
+          </Link>
         </Item>
       </List>
     </Nav>
