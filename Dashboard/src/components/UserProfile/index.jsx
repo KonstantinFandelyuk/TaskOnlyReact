@@ -22,14 +22,14 @@ export const UserProfile = ({ setShowUserProfile }) => {
       userPhoto: e.target.avatar.files[0] ? await readerPhoto(e.target.avatar.files[0]) : userPhoto,
       email: e.target.email.value ? e.target.email.value : email,
     };
-    if (e.target.passwordOne.value === e.target.passwordTwo.value) {
-      const formReset = e.target.closest(".userForm");
-      ProfileUser.updateUserData(userData);
-      formReset.reset();
-      setShowUserProfile(false);
-    } else {
-      alert("Ваши пароли разные!Введите корректные данные");
-    }
+    // if (e.target.passwordOne.value === e.target.passwordTwo.value) {
+    const formReset = e.target.closest(".userForm");
+    ProfileUser.updateUserData(userData);
+    formReset.reset();
+    setShowUserProfile(false);
+    // } else {
+    //   alert("Ваши пароли разные!Введите корректные данные");
+    // }
   };
 
   return (

@@ -20,13 +20,11 @@ export const userSingUp = async (data) => {
 };
 
 export const userLogIn = async (data) => {
-  console.log("data :>> ", toJS(data.username));
   try {
     const response = await fetch(
-      `https://parseapi.back4app.com/login?username=${data.username}&password${data.password}`,
+      `https://parseapi.back4app.com/login?username=${data.username}&password=${data.password}`,
       {
-        method: "POST",
-        body: JSON.stringify(data),
+        method: "GET",
         headers: {
           "X-Parse-Application-Id": `EJH8XBQKRqkx2Ocl4cWHsfAKQqjHnFFnmvyLtxzw`,
           "X-Parse-REST-API-Key": `s7xQGyymCsFiQb6U58OCegISB8Cu7Np6ivh3684z`,
@@ -36,7 +34,7 @@ export const userLogIn = async (data) => {
     );
     return await response.json();
   } catch (error) {
-    console.log("error :>> ", error);
+    console.log("Ошибка, вы ввели не корректные данные");
   }
 };
 

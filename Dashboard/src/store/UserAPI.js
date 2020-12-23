@@ -9,6 +9,7 @@ class UserAPI {
     password: "",
   };
   currentUser = {};
+  userRegistration = false;
   userAllList = [];
   userOnline = { isOnline: true, lastVisite: `${new Date().getDate()}.${new Date().getMonth()}` };
 
@@ -32,7 +33,7 @@ class UserAPI {
   async registrationUser() {
     if (this.userData.username && this.userData.password) {
       const data = await userSingUp(this.userData);
-      this.sessionToken = data.sessionToken;
+      this.userRegistration = true;
     } else {
       console.log("не все данные :>> ");
     }
@@ -41,10 +42,14 @@ class UserAPI {
   async logging() {
     if (this.userData.username && this.userData.password) {
       const data = await userLogIn(this.userData);
-      this.sessionToken = data.sessionToken;
-      this.currentUser = await getCurrentUser();
-      sessionStorage.setItem("user_id", this.sessionToken);
-      await getUserUpdate(this.userOnline);
+      if (data) {
+        this.sessionToken = data.sessionToken;
+        this.currentUser = await getCurrentUser();
+        sessionStorage.setItem("user_id", this.sessionToken);
+        await getUserUpdate(this.userOnline);
+      } else {
+        alert("Вы ввели не корректные данные");
+      }
     } else {
       console.log("не все данные :>> ");
     }

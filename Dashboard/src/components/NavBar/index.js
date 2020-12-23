@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import SwtichTheme from "../../store/SwitchTheme";
+import SwitchTheme from "../../store/SwitchTheme";
 import UserAPI from "../../store/UserAPI";
 import { Item, Nav, List, ItemProfile } from "./style";
 
 export const NavBar = observer(
-  ({ setShowMesseger, showMesseger, setShowUserProfile, showUserProfile }) => {
+  ({ setShowMessenger, showMessenger, setShowUserProfile, showUserProfile }) => {
     return (
       <Nav>
         <List>
@@ -35,7 +35,7 @@ export const NavBar = observer(
               <img src="/images/icon/cloud.png" alt="" />
             </Link>
           </Item>
-          <Item onClick={() => setShowMesseger(showMesseger ? false : true)}>
+          <Item onClick={() => setShowMessenger(showMessenger ? false : true)}>
             <Link to="/">
               <img src="/images/icon/chat.png" alt="" />
             </Link>
@@ -50,7 +50,7 @@ export const NavBar = observer(
               alt=""
             />
           </ItemProfile>
-          <Item onClick={() => SwtichTheme.switchTheme()}>
+          <Item onClick={() => SwitchTheme.switchTheme()}>
             <img src="/images/icon/switchTheme.svg" alt="" />
           </Item>
           <Item onClick={() => UserAPI.logOut()}>
