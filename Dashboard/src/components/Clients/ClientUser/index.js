@@ -1,27 +1,21 @@
 import React from "react";
+import { ClientsItem, TableTitle, TableTitleName } from "../style";
+import { toJS } from "mobx";
 
 export const ClientUser = ({ item }) => {
+  const { name, surname, phone, mail, createdAt, userTask } = item;
+  console.log("item :>> ", toJS(item));
   return (
-    <li>
-      <div
-        style={{
-          display: "flex",
-          textAlign: "center",
-        }}
-      >
-        <div className="name" style={{ minWidth: "200px" }}>
-          {item.name}
-        </div>
-        <div className="surname" style={{ minWidth: "200px" }}>
-          {item.surname}
-        </div>
-        <div className="surname" style={{ minWidth: "200px" }}>
-          {item.phone}
-        </div>
-        <div className="mail" style={{ minWidth: "200px" }}>
-          {item.mail}
-        </div>
-      </div>
-    </li>
+    <ClientsItem>
+      <TableTitle>
+        <TableTitleName>{name}</TableTitleName>
+        <TableTitleName>{surname}</TableTitleName>
+        <TableTitleName>{phone}</TableTitleName>
+        <TableTitleName>{mail}</TableTitleName>
+        <TableTitleName>{userTask.length > 0 ? userTask[0] : "Задач нет"}</TableTitleName>
+        <TableTitleName>{userTask.length > 0 ? userTask[0] : "Комментариев нет"}</TableTitleName>
+        <TableTitleName>{createdAt}</TableTitleName>
+      </TableTitle>
+    </ClientsItem>
   );
 };

@@ -34,7 +34,7 @@ export const CardTextContainer = styled.div`
 `;
 
 export const CardUserName = styled.div`
-  color: grey;
+  color: ${(props) => (props.theme.mode === "dark" ? "#fff" : "grey")};
   margin-bottom: 5px;
   font-weight: 600;
 `;

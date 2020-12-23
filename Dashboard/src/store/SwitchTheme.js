@@ -1,13 +1,12 @@
 import { makeAutoObservable } from "mobx";
 // import { toJS } from "mobx";
 
-class SwtichTheme {
+class SwitchTheme {
   themeName = "light";
   constructor() {
     makeAutoObservable(this);
   }
   switchTheme() {
-    // console.log("this.themeName ", this.themeName);
     if (this.themeName === "light") {
       this.themeName = "dark";
     } else {
@@ -15,4 +14,4 @@ class SwtichTheme {
     }
   }
 }
-export default new SwtichTheme();
+export default new SwitchTheme();

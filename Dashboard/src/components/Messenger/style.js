@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const MessegerBG = styled.div`
+export const MessengerBG = styled.div`
   padding: 30px;
-  background: white;
+  background: ${(props) => (props.theme.mode === "dark" ? "#2d2d2d" : "white")};
   width: 300px;
   height: 100vh;
   overflow: hidden;
@@ -16,6 +16,7 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  color: ${(props) => (props.theme.mode === "dark" ? "#fff" : "black")};
 `;
 
 export const TitleText = styled.div`
@@ -30,4 +31,5 @@ export const TitleButton = styled.button`
   padding: 10px 30px;
   border: 1px solid grey;
   border-radius: 20px;
+  color: ${(props) => (props.theme.mode === "dark" ? "#fff" : "black")};
 `;

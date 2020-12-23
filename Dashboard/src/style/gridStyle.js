@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DashboadrdBG = styled.div`
+export const DashboardBG = styled.div`
   border-radius: 30px;
   box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.15);
   margin: 5px 10px;

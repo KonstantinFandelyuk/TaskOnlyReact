@@ -21,4 +21,7 @@ export const Item = styled.li`
 export const ItemProfile = styled(Item)`
   border-radius: 50%;
   overflow: hidden;
+  &img {
+    object-fit: cover;
+  }
 `;

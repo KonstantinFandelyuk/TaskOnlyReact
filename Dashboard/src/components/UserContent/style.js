@@ -31,6 +31,7 @@ export const ButtonRight = styled(ButtonLeft)`
 
 export const Search = styled.div`
   position: relative;
+  display: flex;
 `;
 
 export const InputSearch = styled.input`
@@ -39,11 +40,14 @@ export const InputSearch = styled.input`
   border: none;
   padding: 10px 30px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  flex-basis: 100%;
+  order: 1;
+  margin-bottom: 10px;
 `;
 
 export const LabelSearch = styled.label`
   position: absolute;
-  top: 50%;
+  top: 38%;
   right: -10%;
   transform: translate(-50%, -50%);
   width: 35px;
@@ -73,4 +77,5 @@ export const PeriodButton = styled.button`
   padding: 10px 20px;
   border: 1px solid grey;
   border-radius: 20px;
+  color: ${(props) => (props.theme.mode === "dark" ? "#fff" : "black")};
 `;

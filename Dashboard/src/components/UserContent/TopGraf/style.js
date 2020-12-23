@@ -5,12 +5,13 @@ export const GrafContainer = styled.div`
 `;
 
 export const GrafBig = styled.div`
-  width: 450px;
-  height: 230px;
+  min-width: 450px;
+  max-height: 230px;
   background: white;
   border-radius: 20px;
   margin-right: 40px;
   box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
 `;
 
 export const MonthlyGrafGoal = styled.div`

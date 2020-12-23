@@ -1,5 +1,5 @@
 import { getAllUsers, userSingUp, userLogIn, getCurrentUser, getUserUpdate } from "../api/api";
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 // import { toJS } from "mobx";
 
 class UserAPI {
@@ -11,8 +11,14 @@ class UserAPI {
   currentUser = {};
   userAllList = [];
   userOnline = { isOnline: true, lastVisite: `${new Date().getDate()}.${new Date().getMonth()}` };
+
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      logging: action.bound,
+      logOut: action.bound,
+      updateCurrentUser: action.bound,
+      getUserList: action.bound,
+    });
   }
 
   getUserName(name) {
@@ -24,7 +30,7 @@ class UserAPI {
   }
 
   async registrationUser() {
-    if (this.userData.username !== "" && this.userData.password !== "") {
+    if (this.userData.username && this.userData.password) {
       const data = await userSingUp(this.userData);
       this.sessionToken = data.sessionToken;
     } else {
@@ -33,7 +39,7 @@ class UserAPI {
   }
 
   async logging() {
-    if (this.userData.username !== "" && this.userData.password !== "") {
+    if (this.userData.username && this.userData.password) {
       const data = await userLogIn(this.userData);
       this.sessionToken = data.sessionToken;
       this.currentUser = await getCurrentUser();
@@ -53,8 +59,14 @@ class UserAPI {
     this.userAllList = [...data.results];
   }
 
-  logOut() {
+  async logOut() {
     sessionStorage.removeItem("user_id");
+    this.userOnline = {
+      isOnline: false,
+      lastVisite: `${new Date().getDate()}.${new Date().getMonth()}`,
+    };
+    const data = await getUserUpdate(this.userOnline);
+    window.location.href = "/login";
   }
 }
 export default new UserAPI();

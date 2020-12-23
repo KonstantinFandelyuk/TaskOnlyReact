@@ -1,12 +1,12 @@
 import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { MessegerBG, TitleContainer, TitleText, TitleButton } from "./style";
+import { MessengerBG, TitleContainer, TitleText, TitleButton } from "./style";
 import { UserCard } from "./UserCard";
 import { observer } from "mobx-react-lite";
 import UserAPI from "../../store/UserAPI";
 import DndUpdater from "../../store/DnD";
 
-export const Messeger = observer(({ messeger }) => {
+export const Messenger = observer(({ showMessenger }) => {
   function handleOnDragEnd(result) {
     if (!result.destination) return;
     const items = Array.from(UserAPI.userAllList);
@@ -15,9 +15,9 @@ export const Messeger = observer(({ messeger }) => {
     DndUpdater.updateUserListInMsg(items);
   }
   return (
-    <MessegerBG className="Msg" active={messeger}>
+    <MessengerBG className="Msg" active={showMessenger}>
       <TitleContainer>
-        <TitleText>Messeger</TitleText>
+        <TitleText>Messenger</TitleText>
         <TitleButton>See all</TitleButton>
       </TitleContainer>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -32,6 +32,6 @@ export const Messeger = observer(({ messeger }) => {
           )}
         </Droppable>
       </DragDropContext>
-    </MessegerBG>
+    </MessengerBG>
   );
 });
