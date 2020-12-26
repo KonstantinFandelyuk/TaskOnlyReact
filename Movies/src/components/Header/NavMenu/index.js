@@ -26,6 +26,7 @@ const NavMenu = () => {
     language,
     switchTheme,
     theme,
+    searchText,
   } = useContext(Context);
 
   return (
@@ -84,6 +85,7 @@ const NavMenu = () => {
         <NavListItem className="nav__list-item">
           <HeaderForm action="">
             <SerachInput
+              value={searchText}
               type="text"
               name="search"
               // id="search"

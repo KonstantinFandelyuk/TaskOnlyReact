@@ -10,7 +10,7 @@ import {
   GenresItem,
 } from './style';
 import Slider from '../Slider/index';
-import { sliceDate } from '../../helpers/helpers';
+import { sliceDate, defaultNoImage } from '../../helpers/helpers';
 import { Context } from '../../context/Context';
 
 function Modal() {
@@ -21,7 +21,11 @@ function Modal() {
         <TopBlock image={modalData.backdrop_path}>
           <TopBlockItem first="true">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${modalData.poster_path}`}
+              src={
+                modalData.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${modalData.poster_path}`
+                  : defaultNoImage
+              }
               alt={`${modalData.name}`}
             />
           </TopBlockItem>

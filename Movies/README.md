@@ -10,4 +10,5 @@ Login: admin Password: admin
 ### `В проекте использовал`
 
 React + StyledComponent В качестве хранилища использовал useContext
-Валидация Formik + Yup 
+Валидация Formik + Yup
+Infinite Scroll доступный в разделе актеры 

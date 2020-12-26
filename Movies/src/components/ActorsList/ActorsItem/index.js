@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { NavListItem, ActorName, ActorCard, ActorInfo, Drpo } from './style';
-import ReactStars from 'react-rating-stars-component';
+import React, { useState } from "react";
+import { NavListItem, ActorName, ActorCard, ActorInfo, Drpo } from "./style";
+import ReactStars from "react-rating-stars-component";
+import { defaultImage } from "../../../helpers/helpers";
 
 function ActorsItem({ item }) {
   const switchGender = (gender) => {
     if (gender === 2) {
-      return 'Male';
+      return "Male";
     } else {
-      return 'Female';
+      return "Female";
     }
   };
 
@@ -26,10 +27,17 @@ function ActorsItem({ item }) {
               color="yellow"
             />
           </div>
-          <div style={{ marginRight: '15px' }}>{switchGender(item.gender)}</div>
+          <div style={{ marginRight: "15px" }}>{switchGender(item.gender)}</div>
         </Drpo>
         <div className="img">
-          <img src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`} alt="" />
+          <img
+            src={
+              item.profile_path
+                ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
+                : defaultImage
+            }
+            alt=""
+          />
         </div>
         <ActorName>{item.name}</ActorName>
       </ActorCard>

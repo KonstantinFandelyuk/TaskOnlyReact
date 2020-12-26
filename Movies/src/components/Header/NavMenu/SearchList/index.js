@@ -5,15 +5,15 @@ import { Context } from '../../../../context/Context';
 
 function SearchList() {
   const { searcDataList } = useContext(Context);
-  return (
+  return searcDataList.length > 0 ? (
     <Search>
-      {/* list={searcDataList.length === 0} */}
       <ul>
-        {searcDataList &&
-          searcDataList.map((item, index) => <SearchItem item={item} key={index} />)}
+        {searcDataList.map((item, index) => (
+          <SearchItem item={item} key={index} />
+        ))}
       </ul>
     </Search>
-  );
+  ) : null;
 }
 
 export default SearchList;

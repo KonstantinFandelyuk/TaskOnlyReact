@@ -1,4 +1,4 @@
-import { API_KEY } from './api_key';
+import { API_KEY } from "./api_key";
 const API = `https://api.themoviedb.org/3`;
 
 export const getData = async (category, lang, page) => {
@@ -8,7 +8,7 @@ export const getData = async (category, lang, page) => {
     );
     return await response.json();
   } catch (error) {
-    console.log('error :>> ', error);
+    console.log("error :>> ", error);
   }
 };
 
@@ -17,7 +17,7 @@ export const getDescriptionData = async (id, lang) => {
     const response = await fetch(`${API}/tv/${id}?api_key=${API_KEY}&language=${lang}`);
     return await response.json();
   } catch (error) {
-    console.log('error :>> ', error);
+    console.log("error :>> ", error);
   }
 };
 
@@ -28,17 +28,17 @@ export const getSearchResult = async (query, lang) => {
     );
     return await response.json();
   } catch (error) {
-    console.log('error :>> ', error);
+    console.log("error :>> ", error);
   }
 };
 
-export const getPersonalActor = async (lang, page) => {
-  try {
-    const response = await fetch(
-      `${API}/person/popular?api_key=${API_KEY}&language=${lang}&page=${page}`,
-    );
-    return await response.json();
-  } catch (error) {
-    console.log('error :>> ', error);
-  }
-};
+// export const getPersonalActor = async (lang, page) => {
+//   try {
+//     const response = await fetch(
+//       `${API}/person/popular?api_key=${API_KEY}&language=${lang}&_page=${page}`,
+//     );
+//     return await response.json();
+//   } catch (error) {
+//     console.log("error :>> ", error);
+//   }
+// };

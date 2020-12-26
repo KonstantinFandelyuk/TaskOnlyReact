@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { Context } from '../../context/Context';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
+import React, { useContext } from "react";
+import { Context } from "../../context/Context";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import {
   LoginUser,
   ModalBG,
@@ -12,25 +12,25 @@ import {
   LiItem,
   Label,
   SpanBold,
-} from './style';
+} from "./style";
 
 const Login = () => {
   const { setToken } = useContext(Context);
   const SignupSchema = Yup.object().shape({
     login: Yup.string()
-      .min(2, 'Too Short!')
-      .max(20, 'Too Long!')
-      .test('login', 'Введите корректный логин', checkLogin)
-      .required('Required'),
+      .min(2, "Too Short!")
+      .max(20, "Too Long!")
+      .test("login", "Введите корректный логин", checkLogin)
+      .required("Required"),
     password: Yup.string()
-      .min(2, 'Too Short!')
-      .max(20, 'Too Long!')
-      .test('login', 'Введите корректный пароль', checkPassword)
-      .required('Required'),
+      .min(2, "Too Short!")
+      .max(20, "Too Long!")
+      .test("login", "Введите корректный пароль", checkPassword)
+      .required("Required"),
   });
 
   function checkLogin(values) {
-    if (values === 'admin') {
+    if (values === "admin") {
       return true;
     } else {
       return false;
@@ -38,7 +38,7 @@ const Login = () => {
   }
 
   function checkPassword(values) {
-    if (values === 'admin') {
+    if (values === "admin") {
       return true;
     } else {
       return false;
@@ -49,11 +49,11 @@ const Login = () => {
     e.preventDefault();
     if (
       Object.keys(errors).length === 0 &&
-      values.login === 'admin' &&
-      values.password === 'admin'
+      values.login === "admin" &&
+      values.password === "admin"
     ) {
-      setToken('d066da765285ecde606037392054558a');
-      sessionStorage.setItem('userID', 'd066da765285ecde606037392054558a');
+      setToken("d066da765285ecde606037392054558a");
+      sessionStorage.setItem("userID", "d066da765285ecde606037392054558a");
     }
   };
 
@@ -63,7 +63,7 @@ const Login = () => {
         <ModalBG>
           <Title>Авторизируйтесь</Title>
           <Formik
-            initialValues={{ login: '', password: '' }}
+            initialValues={{ login: "", password: "" }}
             onSubmit={checkUser}
             validationSchema={SignupSchema}
           >
@@ -71,7 +71,7 @@ const Login = () => {
               <Form>
                 <ul>
                   <LiItem>
-                    <Label for="login">
+                    <Label htmlFor="login">
                       {errors.login && touched && <span>{errors.login}</span>}
                     </Label>
                     <Input
@@ -84,7 +84,7 @@ const Login = () => {
                     />
                   </LiItem>
                   <LiItem>
-                    <Label for="password">
+                    <Label htmlFor="password">
                       {errors.password && touched && <span>{errors.password}</span>}
                     </Label>
                     <Input

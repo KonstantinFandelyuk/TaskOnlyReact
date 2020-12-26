@@ -8,7 +8,7 @@ function Logo() {
       <div className="logo">
         <LogoList className="logo__list">
           <LogoListItem className="logo__list-item" active>
-            <Link to="/home">
+            <Link to="/">
               <img src="/images/header/logo.png" alt="" className="image-logo" />
             </Link>
           </LogoListItem>
