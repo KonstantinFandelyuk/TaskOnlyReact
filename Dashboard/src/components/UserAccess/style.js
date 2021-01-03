@@ -9,9 +9,8 @@ const LoginUser = styled.div`
   left: 0;
   backdrop-filter: blur(8px);
   transition: 0.5s linear;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   transition: 0.5s linear;
 `;
 

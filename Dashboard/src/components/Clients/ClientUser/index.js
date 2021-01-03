@@ -3,8 +3,8 @@ import { ClientsItem, TableTitle, TableTitleName } from "../style";
 import { toJS } from "mobx";
 
 export const ClientUser = ({ item }) => {
-  const { name, surname, phone, mail, createdAt, userTask } = item;
-  console.log("item :>> ", toJS(item));
+  const { name, surname, phone, mail, createdAt, userTask, userComment } = item;
+  console.log("object :>> ", toJS(item));
   return (
     <ClientsItem>
       <TableTitle>
@@ -13,8 +13,8 @@ export const ClientUser = ({ item }) => {
         <TableTitleName>{phone}</TableTitleName>
         <TableTitleName>{mail}</TableTitleName>
         <TableTitleName>{userTask.length > 0 ? userTask[0] : "Задач нет"}</TableTitleName>
-        <TableTitleName>{userTask.length > 0 ? userTask[0] : "Комментариев нет"}</TableTitleName>
-        <TableTitleName>{createdAt}</TableTitleName>
+        <TableTitleName>{userComment ? userComment : "Комментариев нет"}</TableTitleName>
+        <TableTitleName>{createdAt.slice(0, 10)}</TableTitleName>
       </TableTitle>
     </ClientsItem>
   );

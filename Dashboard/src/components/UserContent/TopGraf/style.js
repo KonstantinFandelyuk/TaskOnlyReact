@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const GrafContainer = styled.div`
   display: flex;
+  margin-bottom: 25px;
 `;
 
 export const GrafBig = styled.div`

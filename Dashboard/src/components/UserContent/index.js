@@ -16,6 +16,7 @@ import {
 import { TopGraf } from "./TopGraf";
 import UserAPI from "../../store/UserAPI";
 import ClientsAPI from "../../store/ClientsAPI";
+import { CenterGraf } from "./CenterGraf";
 
 export const UserContent = observer(() => {
   const { currentUser } = UserAPI;
@@ -45,6 +46,7 @@ export const UserContent = observer(() => {
         <PeriodButton type="button">change</PeriodButton>
       </PeriodContainer>
       <TopGraf />
+      <CenterGraf />
     </ContentContainer>
   );
 });

@@ -4,7 +4,6 @@ import UserApi from "../../../store/UserAPI";
 import { Button, Input, Title, LiItem, Label } from "./style";
 
 export const SignUp = observer(() => {
-  const res = false;
   return (
     <div className="signUp">
       <Title>Регистрация нового пользователя</Title>

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { getClientsList } from "../api/api";
-import { toJS } from "mobx";
+// import { toJS } from "mobx";
 
 class ClientsAPI {
   clients = [];

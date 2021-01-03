@@ -1,6 +1,6 @@
 import { getAllUsers, userSingUp, userLogIn, getCurrentUser, getUserUpdate } from "../api/api";
 import { action, makeAutoObservable } from "mobx";
-// import { toJS } from "mobx";
+import { toJS } from "mobx";
 
 class UserAPI {
   sessionToken = this.sessionToken ? this.sessionToken : null;
@@ -18,7 +18,7 @@ class UserAPI {
       logging: action.bound,
       logOut: action.bound,
       updateCurrentUser: action.bound,
-      getUserList: action.bound,
+      fetchUserList: action.bound,
     });
   }
 
@@ -59,9 +59,13 @@ class UserAPI {
     this.currentUser = await getCurrentUser();
   }
 
-  async getUserList() {
+  async fetchUserList() {
     const data = await getAllUsers();
-    this.userAllList = [...data.results];
+    let count = 1;
+    this.userAllList = data.results.map((obj) => ({
+      ...obj,
+      order: count++,
+    }));
   }
 
   async logOut() {
@@ -74,4 +78,5 @@ class UserAPI {
     window.location.href = "/login";
   }
 }
+
 export default new UserAPI();

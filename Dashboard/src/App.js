@@ -20,7 +20,7 @@ export const App = observer(() => {
     UserAPI.sessionToken = sessionStorage.getItem("user_id")
       ? sessionStorage.getItem("user_id")
       : "";
-    UserAPI.getUserList();
+    UserAPI.fetchUserList();
     UserAPI.updateCurrentUser();
     ClientsAPI.checkClientsList();
   }, []);
