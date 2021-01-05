@@ -26,7 +26,7 @@ export const NavBar = observer(
             </Link>
           </Item>
           <Item>
-            <Link to="/">
+            <Link to="/task">
               <img src="/images/icon/services.png" alt="" />
             </Link>
           </Item>

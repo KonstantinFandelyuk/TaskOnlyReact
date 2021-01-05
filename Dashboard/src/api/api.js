@@ -1,5 +1,5 @@
 import UserAPI from "../store/UserAPI";
-import { toJS } from "mobx";
+// import { toJS } from "mobx";
 
 export const userSingUp = async (data) => {
   try {
@@ -11,7 +11,7 @@ export const userSingUp = async (data) => {
         "X-Parse-Revocable-Session": 1,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ data }),
     });
     return await response.json();
   } catch (error) {

@@ -5,6 +5,7 @@ import { UserContent } from "../components/UserContent";
 import { Clients } from "../components/Clients";
 import UserAPI from "../store/UserAPI";
 import { observer } from "mobx-react-lite";
+import { Task } from "../components/Task";
 
 export const Routers = observer(() => {
   return (
@@ -13,6 +14,7 @@ export const Routers = observer(() => {
         <Switch>
           <Route exact path="/" component={UserContent} />
           <Route path="/clients" component={Clients} />
+          <Route path="/task" component={Task} />
         </Switch>
       ) : (
         <Switch>
