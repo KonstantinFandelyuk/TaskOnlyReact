@@ -13,6 +13,7 @@ import {
 } from "./style";
 import { observer } from "mobx-react-lite";
 import UserAPI from "../../store/UserAPI";
+import ChatStore from "../../store/ChatStore";
 
 export const Messenger = observer(({ showMessenger }) => {
   const [data, setData] = useState([]);
@@ -22,6 +23,11 @@ export const Messenger = observer(({ showMessenger }) => {
   useEffect(() => {
     setData(UserAPI.userAllList);
   }, [UserAPI.userAllList]);
+
+  const openChatHandler = (item) => {
+    ChatStore.openChatHandler(!ChatStore.openChat);
+    ChatStore.getUserId(item);
+  };
 
   const dragStartHandler = (e, cardItem) => {
     setCurrentCard(cardItem);
@@ -89,6 +95,9 @@ export const Messenger = observer(({ showMessenger }) => {
                 onDragOver={(e) => dragOverHandler(e)}
                 onDrop={(e) => onDropHandler(e, item)}
                 key={item.objectId}
+                onClick={(e) => {
+                  openChatHandler(item);
+                }}
               >
                 <CardImage active={item.isOnline}>
                   <img src="/images/icon/default-profile.jpg" alt="" />

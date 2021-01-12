@@ -35,12 +35,12 @@ export const NavBar = observer(
               <img src="/images/icon/cloud.png" alt="" />
             </Link>
           </Item>
-          <Item onClick={() => setShowMessenger(showMessenger ? false : true)}>
+          <Item onClick={() => setShowMessenger(!showMessenger)}>
             <Link to="/">
               <img src="/images/icon/chat.png" alt="" />
             </Link>
           </Item>
-          <ItemProfile onClick={() => setShowUserProfile(showUserProfile !== true)}>
+          <ItemProfile onClick={() => setShowUserProfile(!showUserProfile)}>
             <img
               src={
                 UserAPI.currentUser.userPhoto

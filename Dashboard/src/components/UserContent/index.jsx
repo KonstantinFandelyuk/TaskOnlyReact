@@ -17,6 +17,8 @@ import { TopGraf } from "./TopGraf";
 import UserAPI from "../../store/UserAPI";
 import ClientsAPI from "../../store/ClientsAPI";
 import { CenterGraf } from "./CenterGraf";
+import { Chat } from "../Chat";
+import ChatStore from "../../store/ChatStore";
 
 export const UserContent = observer(() => {
   const { currentUser } = UserAPI;
@@ -47,6 +49,7 @@ export const UserContent = observer(() => {
       </PeriodContainer>
       <TopGraf />
       <CenterGraf />
+      {ChatStore.openChat ? <Chat /> : null}
     </ContentContainer>
   );
 });

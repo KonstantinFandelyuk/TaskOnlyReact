@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TaskAPI from "../../store/Task";
 import { observer } from "mobx-react-lite";
+import { Transition } from "react-transition-group";
 import {
   TaskBlock,
   HeroTitle,
@@ -13,10 +14,11 @@ import {
   TaskInputTitle,
   TaskInputClose,
 } from "./style";
-import { toJS } from "mobx";
+// import { toJS } from "mobx";
 import { updateTask } from "../../api/boardApi";
 
 export const Task = observer(() => {
+
   const [modal, setModal] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [currentBoard, setCurrentBoard] = useState(null);
@@ -52,12 +54,7 @@ export const Task = observer(() => {
 
   const onDropHandler = (e, board, card) => {
     e.preventDefault();
-    console.log("toJS(currentBoard) :>> ", toJS(currentBoard));
-    console.log("toJS(currentItem) :>> ", toJS(currentItem));
     const currentIndex = currentBoard.taskBoard.indexOf(currentItem);
-
-    console.log("toJS(currentIndex currentIndex currentIndex) :>> ", toJS(currentIndex));
-
     currentBoard.taskBoard.splice(currentIndex, 1);
     const dropIndex = board.taskBoard.indexOf(card);
     board.taskBoard.splice(dropIndex + 1, 0, currentItem);
@@ -74,7 +71,7 @@ export const Task = observer(() => {
         // console.log("currentBoard :>> ", toJS(currentBoard));
         return currentBoard;
       }
-      console.log("b :>> ", toJS(b));
+      // console.log("b :>> ", toJS(b));
       return b;
     });
 
@@ -107,16 +104,20 @@ export const Task = observer(() => {
             </BoardItem>
           ))}
         </BoardList>
-        <TaskInput open={modal}>
-          <TaskInputClose onClick={() => setModal(false)}>X</TaskInputClose>
-          <TaskInputTitle>Введите название задачи</TaskInputTitle>
-          <input
-            type="text"
-            value={TaskAPI.taskName}
-            onChange={(e) => TaskAPI.enterTaskName(e.target.value)}
-          />
-          <button onClick={(e) => addTaskHandler()}>Добавить задачу</button>
-        </TaskInput>
+        <Transition in={modal} timeout={2000}>
+          {(state) => (
+            <TaskInput open={modal}>
+              <TaskInputClose onClick={() => setModal(false)}>X</TaskInputClose>
+              <TaskInputTitle>Введите название задачи</TaskInputTitle>
+              <input
+                type="text"
+                value={TaskAPI.taskName}
+                onChange={(e) => TaskAPI.enterTaskName(e.target.value)}
+              />
+              <button onClick={(e) => addTaskHandler()}>Добавить задачу</button>
+            </TaskInput>
+          )}
+        </Transition>
       </div>
     </TaskBlock>
   );

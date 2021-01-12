@@ -1,6 +1,6 @@
 import { getAllUsers, userSingUp, userLogIn, getCurrentUser, getUserUpdate } from "../api/api";
 import { action, makeAutoObservable } from "mobx";
-// import { toJS } from "mobx";
+import { toJS } from "mobx";
 
 class UserAPI {
   sessionToken = this.sessionToken ? this.sessionToken : null;
@@ -47,6 +47,7 @@ class UserAPI {
         this.currentUser = await getCurrentUser();
         sessionStorage.setItem("user_id", this.sessionToken);
         await getUserUpdate(this.userOnline);
+        console.log("toJS() :>> ", toJS(this.currentUser));
       } else {
         alert("Вы ввели не корректные данные");
       }

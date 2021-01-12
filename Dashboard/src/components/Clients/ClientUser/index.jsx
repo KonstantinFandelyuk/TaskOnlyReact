@@ -1,10 +1,8 @@
 import React from "react";
 import { ClientsItem, TableTitle, TableTitleName } from "../style";
-import { toJS } from "mobx";
 
 export const ClientUser = ({ item }) => {
   const { name, surname, phone, mail, createdAt, userTask, userComment } = item;
-  console.log("object :>> ", toJS(item));
   return (
     <ClientsItem>
       <TableTitle>
