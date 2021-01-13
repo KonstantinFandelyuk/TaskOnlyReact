@@ -1,9 +1,9 @@
 import UserAPI from "../store/UserAPI";
-// import { toJS } from "mobx";
+import { toJS } from "mobx";
 
 export const userSingUp = async (data) => {
   try {
-    const response = await fetch(`https://parseapi.back4app.com/users`, {
+    const response = await fetch(`https://dashme.b4a.io/users`, {
       method: "POST",
       headers: {
         "X-Parse-Application-Id": `EJH8XBQKRqkx2Ocl4cWHsfAKQqjHnFFnmvyLtxzw`,
@@ -11,7 +11,7 @@ export const userSingUp = async (data) => {
         "X-Parse-Revocable-Session": 1,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data }),
+      body: JSON.stringify(data),
     });
     return await response.json();
   } catch (error) {
@@ -22,7 +22,7 @@ export const userSingUp = async (data) => {
 export const userLogIn = async (data) => {
   try {
     const response = await fetch(
-      `https://parseapi.back4app.com/login?username=${data.username}&password=${data.password}`,
+      `https://dashme.b4a.io/login?username=${data.username}&password=${data.password}`,
       {
         method: "GET",
         headers: {

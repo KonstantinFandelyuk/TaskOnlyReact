@@ -4,7 +4,6 @@ import { getBoard, updateTask } from "../api/boardApi";
 
 class Task {
   taskList = [];
-  taskName = "";
   constructor() {
     makeAutoObservable(this, {
       fetchBoard: action.bound,
@@ -12,24 +11,19 @@ class Task {
     });
   }
 
-  enterTaskName(value) {
-    this.taskName = value;
-  }
-
   async fetchBoard() {
     const response = await getBoard();
     this.taskList = [...response.results];
   }
 
-  async addNewTask(item) {
+  addNewTask(item, taskName) {
     const taskBoard = [];
     taskBoard.push(...item.taskBoard, {
       id: Math.ceil(Math.random(new Date().getTime()) * (5 - 100) + 88),
-      title: this.taskName,
+      title: taskName,
     });
     updateTask(item.objectId, { taskBoard });
-    await this.fetchBoard();
-    this.taskName = "";
+    this.fetchBoard();
   }
 }
 

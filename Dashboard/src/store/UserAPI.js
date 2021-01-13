@@ -33,7 +33,12 @@ class UserAPI {
   async registrationUser() {
     if (this.userData.username && this.userData.password) {
       const data = await userSingUp(this.userData);
-      this.userRegistration = true;
+      console.log("userDdsdsdsata :>> ", toJS(data));
+      if (!data.error) {
+        this.userRegistration = true;
+      } else {
+        console.log("не все данные :>> ");
+      }
     } else {
       console.log("не все данные :>> ");
     }
@@ -42,17 +47,16 @@ class UserAPI {
   async logging() {
     if (this.userData.username && this.userData.password) {
       const data = await userLogIn(this.userData);
-      if (data) {
+      if (!data.error) {
         this.sessionToken = data.sessionToken;
         this.currentUser = await getCurrentUser();
         sessionStorage.setItem("user_id", this.sessionToken);
         await getUserUpdate(this.userOnline);
-        console.log("toJS() :>> ", toJS(this.currentUser));
       } else {
-        alert("Вы ввели не корректные данные");
+        alert("Вы ввели не корректно логин или пароль!");
       }
     } else {
-      console.log("не все данные :>> ");
+      alert("Вы ввели не корректно логин или пароль!");
     }
   }
 

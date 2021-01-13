@@ -14,14 +14,13 @@ import {
   TaskInputTitle,
   TaskInputClose,
 } from "./style";
-// import { toJS } from "mobx";
 import { updateTask } from "../../api/boardApi";
 
 export const Task = observer(() => {
-
   const [modal, setModal] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
   const [currentBoard, setCurrentBoard] = useState(null);
+  const [task, setTask] = useState("");
 
   const openModal = (item) => {
     setModal(true);
@@ -29,7 +28,8 @@ export const Task = observer(() => {
   };
 
   const addTaskHandler = () => {
-    TaskAPI.addNewTask(currentItem);
+    TaskAPI.addNewTask(currentItem, task);
+    setTask("");
     setModal(false);
   };
 
@@ -62,16 +62,13 @@ export const Task = observer(() => {
     TaskAPI.taskList.map(async (b) => {
       let taskBoard = [];
       if (b.id === board.id) {
-        // console.log("board :>> ", toJS(board.taskBoard));
         taskBoard = board.taskBoard;
         await updateTask(board.objectId, { taskBoard });
         return board;
       }
       if (b.id === currentBoard.id) {
-        // console.log("currentBoard :>> ", toJS(currentBoard));
         return currentBoard;
       }
-      // console.log("b :>> ", toJS(b));
       return b;
     });
 
@@ -109,11 +106,7 @@ export const Task = observer(() => {
             <TaskInput open={modal}>
               <TaskInputClose onClick={() => setModal(false)}>X</TaskInputClose>
               <TaskInputTitle>Введите название задачи</TaskInputTitle>
-              <input
-                type="text"
-                value={TaskAPI.taskName}
-                onChange={(e) => TaskAPI.enterTaskName(e.target.value)}
-              />
+              <input type="text" value={task} onChange={(e) => setTask(e.target.value)} />
               <button onClick={(e) => addTaskHandler()}>Добавить задачу</button>
             </TaskInput>
           )}
