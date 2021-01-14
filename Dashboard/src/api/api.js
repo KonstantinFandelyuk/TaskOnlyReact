@@ -1,5 +1,4 @@
 import UserAPI from "../store/UserAPI";
-import { toJS } from "mobx";
 
 export const userSingUp = async (data) => {
   try {

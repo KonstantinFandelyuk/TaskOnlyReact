@@ -1,6 +1,6 @@
 export const getMsg = async () => {
   try {
-    const response = await fetch(`https://dashme.b4a.io/classes/Chat`, {
+    const response = await fetch(`https://dashme-chat.b4a.io/classes/Chat`, {
       method: "GET",
       headers: {
         "X-Parse-Application-Id": `EJH8XBQKRqkx2Ocl4cWHsfAKQqjHnFFnmvyLtxzw`,
@@ -15,7 +15,7 @@ export const getMsg = async () => {
 
 export const addMsg = async (id, data) => {
   try {
-    const response = await fetch(`https://dashme.b4a.io/classes/Chat/${id}`, {
+    const response = await fetch(`https://dashme-chat.b4a.io/classes/Chat/${id}`, {
       method: "PUT",
       headers: {
         "X-Parse-Application-Id": `EJH8XBQKRqkx2Ocl4cWHsfAKQqjHnFFnmvyLtxzw`,
