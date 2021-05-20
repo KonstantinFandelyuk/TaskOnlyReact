@@ -3,9 +3,10 @@ import dataStore from '../../store/dataStore';
 import { getDayAndMonth } from '../helpers/timeWork';
 import { LeftSide } from './LeftSide';
 import { RightSide } from './RightSide';
+import { observer } from 'mobx-react-lite';
 import './style.scss';
 
-export const Widget: FC = () => {
+export const Widget: FC = observer(() => {
   const { currentWeather } = dataStore;
   return (
     <div className="widget">
@@ -18,4 +19,4 @@ export const Widget: FC = () => {
       )}
     </div>
   );
-};
+});

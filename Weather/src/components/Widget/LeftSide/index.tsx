@@ -2,9 +2,11 @@ import React, { FC } from 'react';
 // import { getMeIcon } from '../../helpers/iconHelpers';
 import { getCurrentDate, geCurrentDay } from '../../helpers/timeWork';
 import dataStore from '../../../store/dataStore';
+import { observer } from 'mobx-react-lite';
 import './style.scss';
+import { toJS } from 'mobx';
 
-export const LeftSide: FC = () => {
+export const LeftSide: FC = observer(() => {
   const { currentWeather, locationInfo } = dataStore;
   return (
     <div className="leftSide">
@@ -28,4 +30,4 @@ export const LeftSide: FC = () => {
       </div>
     </div>
   );
-};
+});

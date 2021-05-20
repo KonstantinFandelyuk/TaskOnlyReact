@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { nanoid } from 'nanoid';
 import './style.scss';
 import dataStore from '../../../../store/dataStore';
+import { observer } from 'mobx-react-lite';
 
-export const WeatherInfo: FC = () => {
+export const WeatherInfo: FC = observer(() => {
   const {
     currentWeather,
     searchList,
@@ -72,4 +73,4 @@ export const WeatherInfo: FC = () => {
       )}
     </div>
   );
-};
+});
