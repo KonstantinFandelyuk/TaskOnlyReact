@@ -1,23 +1,17 @@
 import React, { FC } from 'react';
-import { IData, ISearchData } from '../../../../types/types';
 import { nanoid } from 'nanoid';
 import './style.scss';
+import dataStore from '../../../../store/dataStore';
 
-interface WeatherInfoProps {
-  data?: IData;
-  search: string;
-  searchHandler: (value: string) => void;
-  submitCurrentCity: (value: string) => void;
-  searchData?: ISearchData[];
-}
-
-export const WeatherInfo: FC<WeatherInfoProps> = ({
-  data,
-  searchHandler,
-  submitCurrentCity,
-  searchData,
-  search,
-}) => {
+export const WeatherInfo: FC = () => {
+  const {
+    currentWeather,
+    searchList,
+    inputSearch,
+    updateCurrentCity,
+    submitSearchCity,
+    isShowList,
+  } = dataStore;
   return (
     <div className="weather-info">
       <div className="header">
@@ -27,56 +21,54 @@ export const WeatherInfo: FC<WeatherInfoProps> = ({
             type="text"
             id="search"
             placeholder=" "
-            onChange={(e) => searchHandler(e.target.value)}
+            onChange={(e) => inputSearch(e.target.value)}
           />
           <label htmlFor="search"> Search City</label>
+          <button type="button" onClick={() => submitSearchCity()}></button>
         </div>
       </div>
-      {search.length < 1 ? (
+      {isShowList ? (
+        <div className="city">
+          <ul className="city__list">
+            {searchList &&
+              searchList?.map((item, i) => (
+                <li
+                  key={nanoid()}
+                  onClick={() => updateCurrentCity(item.name)}
+                  className="city__list-item"
+                >
+                  {i + 1}. {item.name}
+                </li>
+              ))}
+          </ul>
+        </div>
+      ) : (
         <div className="cards">
           <div className="cards-item">
             <span>Precipitation</span>
-            <span>{data?.precip_mm}mm</span>
+            <span>{currentWeather?.precip_mm}mm</span>
           </div>
           <div className="cards-item">
             <span>Humidity</span>
-            <span>{data?.humidity}%</span>
+            <span>{currentWeather?.humidity}%</span>
           </div>
           <div className="cards-item">
             <span>Wind</span>
-            <span>{data?.wind_mph}ms</span>
+            <span>{currentWeather?.wind_mph}ms</span>
           </div>
           <div className="cards-item">
             <span>Dir of the wind</span>
-            <span>{data?.wind_dir}</span>
+            <span>{currentWeather?.wind_dir}</span>
           </div>
           <div className="cards-item">
             <span>Feels</span>
-            <span>{data?.feelslike_c}°C</span>
+            <span>{currentWeather?.feelslike_c}°C</span>
           </div>
           <div className="cards-item">
             <span>Lowest</span>
             <span>22°</span>
           </div>
         </div>
-      ) : (
-        <>
-          {searchData && (
-            <div className="city">
-              <ul className="city__list">
-                {searchData.map((item) => (
-                  <li
-                    key={nanoid()}
-                    onClick={() => submitCurrentCity(item.name)}
-                    className="city__list-item"
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </>
       )}
     </div>
   );

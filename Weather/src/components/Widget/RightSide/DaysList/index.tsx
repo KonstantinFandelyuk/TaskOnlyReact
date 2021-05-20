@@ -1,14 +1,12 @@
 import React, { FC } from 'react';
 import { DaysListItem } from './DaysListItem';
 import { nanoid } from 'nanoid';
-import './style.scss';
 import { IForecastItem } from '../../../../types/types';
+import dataStore from '../../../../store/dataStore';
+import './style.scss';
 
-interface DaysListProps {
-  dataForecast: any;
-}
-
-export const DaysList: FC<DaysListProps> = ({ dataForecast }) => {
+export const DaysList: FC = () => {
+  const { dataForecast } = dataStore;
   return (
     <ul className="forecastDayList">
       {/* {dataForecast.map(({ date, date_epoch }) => {

@@ -12,11 +12,14 @@
     .search {
       font-size: 1.5rem;
       position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       &::before {
         content: '';
         position: absolute;
         top: 6px;
-        right: 15px;
+        right: 50px;
         width: 16px;
         height: 16px;
         background-image: url('/assets/images/content/icon-search/search.png');
@@ -36,10 +39,23 @@
         border: 1px solid rgb(255, 255, 255);
         padding: 5px 15px;
         color: black;
+        margin-right: 10px;
         &:not(:placeholder-shown) + label {
           top: 8px;
           left: -85px;
           transition: 0.3s linear;
+        }
+      }
+      button {
+        background-color: transparent;
+        background-image: url('/assets/images/content/icon-search/arrow.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s linear;
+        &:hover {
+          transform: translateX(5px);
         }
       }
     }

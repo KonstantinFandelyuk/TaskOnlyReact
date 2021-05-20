@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
 // import { getMeIcon } from '../../helpers/iconHelpers';
 import { getCurrentDate, geCurrentDay } from '../../helpers/timeWork';
-import { IData, ILocation } from '../../../types/types';
+import dataStore from '../../../store/dataStore';
 import './style.scss';
 
-interface LeftSideProps {
-  locInfo?: ILocation;
-  data?: IData;
-}
-
-export const LeftSide: FC<LeftSideProps> = ({ locInfo, data }) => {
+export const LeftSide: FC = () => {
+  const { currentWeather, locationInfo } = dataStore;
   return (
     <div className="leftSide">
       <div className="dateContainer">
@@ -18,17 +14,17 @@ export const LeftSide: FC<LeftSideProps> = ({ locInfo, data }) => {
           <span className="date">{getCurrentDate()}</span>
         </span>
         <span className="location">
-          {locInfo?.name}, {locInfo?.country}
+          {locationInfo?.name}, {locationInfo?.country}
         </span>
       </div>
 
       <div className="LilInfoContainer">
         <span className="WeatherIcon">
-          <img src={data?.condition.icon} alt="pic weather" />
+          <img src={currentWeather?.condition.icon} alt="pic weather" />
           {/* {data && <img src={getMeIcon(data?.condition.text)} alt="img" />} */}
         </span>
-        <span className="MainDeg">{data?.temp_c}°</span>
-        <span className="Description">{data?.condition.text}</span>
+        <span className="MainDeg">{currentWeather?.temp_c}°</span>
+        <span className="Description">{currentWeather?.condition.text}</span>
       </div>
     </div>
   );
