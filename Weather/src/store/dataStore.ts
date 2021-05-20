@@ -1,7 +1,7 @@
 import { IData, ILocation, ISearchData } from './../types/types';
 import { makeAutoObservable, action } from 'mobx';
 import { fetchForecast, fetchSearch } from '../api/apiWeather';
-import { toJS } from 'mobx';
+// import { toJS } from 'mobx';
 
 class dataStore {
   loading: boolean = false;
